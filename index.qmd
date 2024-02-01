@@ -1,0 +1,12 @@
+---
+title: "Project title"
+subtitle: "INFO 523 - Project 1"
+author: "Team name"
+format: html
+editor: visual
+jupyter: python3
+---
+
+## Abstract
+
+Add project abstract here.
