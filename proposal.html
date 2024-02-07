@@ -127,6 +127,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#analysis-plan" id="toc-analysis-plan" class="nav-link" data-scroll-target="#analysis-plan">Analysis plan</a></li>
   </ul>
 </nav>
@@ -158,27 +160,20 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly.</p>
 <hr>
-<div style="text-align: justify;">
-<p>##Dataset</p>
+</section>
+<section id="dataset" class="level2" style="text-align: justify;">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <p>The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly. The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022.</p>
 <p>Analyzing these datasets can help us understand the past and present climate trends and potentially predict future patterns.The datasets provide a comprehensive view of temperature changes from different perspectives - global, Northern Hemisphere, Southern Hemisphere, and zonal annual temperatures. Moreover, one of the team members is very familiar with spatial-temporal datasets as he is doing a Ph.D.&nbsp;in hydrology and atmospheric sciences; hence, having good domain knowledge can help us ask reasonable questions and do the analysis faster.</p>
-</div>
-<table class="table">
-<colgroup>
-<col style="width: 6%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>## Questions</td>
-</tr>
-<tr class="even">
-<td>1. How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?</td>
-</tr>
-<tr class="odd">
-<td>2. How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?</td>
-</tr>
-</tbody>
-</table>
+</section>
+<hr>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ol type="1">
+<li><p>How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?</p></li>
+<li><p>How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?</p></li>
+</ol>
+<hr>
 </section>
 <section id="analysis-plan" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-plan">Analysis plan</h2>
