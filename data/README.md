@@ -11,6 +11,16 @@ This repository contains datasets about temperature changes across different geo
 
 
 ```{python}
+#| label: load-pkgs
+#| message: false
+#| echo: false
+import numpy as np
+import pandas as pd
+from tabulate import tabulate
+```
+
+
+```{python}
 #| label: load-global
 #| message: false
 #| echo: false
