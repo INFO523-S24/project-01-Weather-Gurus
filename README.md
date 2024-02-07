@@ -1,4 +1,4 @@
-# project-01
+# project-01 Global Temperature Analysis
 
 Project 1 repo for INFO 523 - Spring 2024.
 
