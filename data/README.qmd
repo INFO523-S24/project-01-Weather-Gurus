@@ -20,21 +20,18 @@ from tabulate import tabulate
 ```
 
 
-```{python}
-#| label: load-global
-#| message: false
-#| echo: false
 
-global_temps
-
-```
 
 ```{python}
 #| label: load-global-description
 #| message: false
 #| echo: false
 
-print(tabulate(global_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+global_temps_description = pd.read_csv('global_temps.csv')
+
+# Display only the first 5 rows of the DataFrame
+print(tabulate(global_temps_description.head(), headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+
 
 ```
 
@@ -47,21 +44,17 @@ print(tabulate(global_temps_description, headers='keys', tablefmt='pipe', showin
 - **Description**: This dataset focuses on temperature changes within the Northern Hemisphere, offering detailed insights into seasonal and annual temperature variations.
 - **Dimensions**: 144 rows × 19 columns
 
-```{python}
-#| label: load-nh
-#| message: false
-#| echo: false
 
-nh_temps
-
-```
 
 ```{python}
 #| label: load-nh-description
 #| message: false
 #| echo: false
 
-print(tabulate(nh_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+
+nh_temps_description = pd.read_csv('nh_temps.csv')
+
+print(tabulate(nh_temps_description.head(), headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
 
 ```
 
@@ -71,21 +64,15 @@ print(tabulate(nh_temps_description, headers='keys', tablefmt='pipe', showindex=
 - **Description**: The Southern Hemisphere temperatures dataset provides a detailed look at temperature trends and changes in the Southern Hemisphere.
 - **Dimensions**: 144 rows × 19 columns
 
-```{python}
-#| label: load-sh
-#| message: false
-#| echo: false
-
-sh_temps
-
-```
 
 ```{python}
 #| label: load-sh-description
 #| message: false
 #| echo: false
 
-print(tabulate(sh_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+sh_temps_description = pd.read_csv('sh_temps.csv')
+
+print(tabulate(sh_temps_description.head(), headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
 
 ```
 
@@ -96,21 +83,15 @@ print(tabulate(sh_temps_description, headers='keys', tablefmt='pipe', showindex=
 - **Dimensions**: 143 rows × 15 columns
 
 
-```{python}
-#| label: load-zonann
-#| message: false
-#| echo: false
-
-zonann_temps
-
-```
 
 ```{python}
 #| label: load-zonann-description
 #| message: false
 #| echo: false
 
-print(tabulate(zonann_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+zonann_temps_description = pd.read_csv('zonann_temps.csv')
+
+print(tabulate(zonann_temps_description.head(), headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
 
 ```
 
@@ -139,56 +120,12 @@ For all datasets, the following variables are commonly found:
 
 
 
-
-
-
-
 #### Zonal Annual Temperatures
 
 - `Year`: Integer
 - `Glob`, `NHem`, `SHem`, and zonal breakdowns (`24N-90N`, `24S-24N`, etc.): Float
 
-```{python}
-#| label: load-zonann
-#| message: false
-#| echo: false
 
-zonann_temps
-
-```
-
-```{python}
-#| label: load-zonann-description
-#| message: false
-#| echo: false
-
-print(tabulate(zonann_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
-
-```
-
-
-
----
 
 Please refer to the specific dataset files for more detailed analysis and exploration of the temperature data. Each file is provided in CSV format for easy use with a variety of data analysis tools and software.
-
-
-```{python}
-#| label: load-dataset
-#| message: false
-#| echo: false
-
-# Read in manually
-global_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/global_temps.csv')
-nh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/nh_temps.csv')
-sh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/sh_temps.csv')
-zonann_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv')
-
-global_temps_description = pd.read_csv("global_temps_description.csv")
-nh_temps_description = pd.read_csv("nh_temps_description.csv")
-sh_temps_description = pd.read_csv("sh_temps_description.csv")
-zonann_temps_description = pd.read_csv("zonann_temps_description.csv")
-```
-
-
 
