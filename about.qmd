@@ -7,6 +7,8 @@ jupyter: python3
 
 This project was developed by **Weather Gurus** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
+-   Mohammad Farmani: second year PhD student in Hydrology and Atmospheric Sciences(HAS).
+
 -   Deema Albluwi: second year PhD student in Computational Linguistics.
 -   Remi Hendershott: first year master's student in Information Science, with focus on HCI, seeking a career in UX/UI design. 
 
