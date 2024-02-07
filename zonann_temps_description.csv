@@ -1,0 +1,16 @@
+﻿variable,class,description
+Year,double,Year
+Glob,double,Global
+NHem,double,Northern Hemisphere
+SHem,double,Southern Hemisphere
+24N-90N,double,24N-90N lattitude
+24S-24N,double,24S-24N lattitude
+90S-24S,double,90S-24S lattitude
+64N-90N,double,64N-90N lattitude
+44N-64N,double,44N-64N lattitude
+24N-44N,double,24N-44N lattitude
+EQU-24N,double,EQU-24N lattitude
+24S-EQU,double,24S-EQU lattitude
+44S-24S,double,44S-24S lattitude
+64S-44S,double,64S-44S lattitude
+90S-64S,double,90S-64S lattitude

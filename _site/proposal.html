@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.540">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project Title - Proposal title</title>
+<title>Project Title - Global Temperature Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,44 +20,10 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -79,7 +45,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,11 +60,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -101,9 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Project Title</span>
     </a>
@@ -115,32 +91,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Project</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./proposal.html" rel="" target="" aria-current="page">
- <span class="menu-text">Proposal</span></a>
+    <a class="nav-link active" href="./proposal.html" aria-current="page"> 
+<span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentation.html" rel="" target="">
- <span class="menu-text">Presentation</span></a>
+    <a class="nav-link" href="./presentation.html"> 
+<span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/INFO523-S24/project-01" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/INFO523-S24/project-01"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -153,7 +129,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  </ul></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#analysis-plan" id="toc-analysis-plan" class="nav-link" data-scroll-target="#analysis-plan">Analysis plan</a></li>
   </ul>
@@ -164,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Proposal title</h1>
+<h1 class="title">Global Temperature Analysis</h1>
 <p class="subtitle lead">Proposal</p>
 </div>
 
@@ -178,25 +157,902 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
 
-<div id="load-pkgs" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="dataset" class="level2">
+
+<section id="dataset" class="level2" style="text-align: justify;">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.</p>
-<p>Make sure to load the data and use inline code for some of this information.</p>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly. The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. Global_temps.csv provides mean monthly temperatures over the whole globe while nh_temps.csv and sh_temps.csv provide the same information but over the northern and southern hemispheres separately. We have also seasonall variables that are based on meteorological seasons where for example Dec-Jan-Feb is the northern hemisphere meteorological winter. We have also the zonnan_temps.csv dataset which provides annual zonal temperatures across four zones in each hemisphere. For example, the zones in the northern hemispheres are EQ-24N, 24N-44N, 44N-64N, and 64N-90N, and we have the same zones for the southern hemisphere with N repalced by S. Below you can find the datasets and a brief description of the variables.</p>
+</section>
+</section>
+<section id="northern-hemisphere-annomalies-and-description" class="level4">
+<h4 class="anchored" data-anchor-id="northern-hemisphere-annomalies-and-description">Northern Hemisphere Annomalies and Description</h4>
+<div id="cell-load-nh" class="cell" data-message="false" data-execution_count="3">
+<div id="load-nh" class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Jan</th>
+<th data-quarto-table-cell-role="th">Feb</th>
+<th data-quarto-table-cell-role="th">Mar</th>
+<th data-quarto-table-cell-role="th">Apr</th>
+<th data-quarto-table-cell-role="th">May</th>
+<th data-quarto-table-cell-role="th">Jun</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">Aug</th>
+<th data-quarto-table-cell-role="th">Sep</th>
+<th data-quarto-table-cell-role="th">Oct</th>
+<th data-quarto-table-cell-role="th">Nov</th>
+<th data-quarto-table-cell-role="th">Dec</th>
+<th data-quarto-table-cell-role="th">J-D</th>
+<th data-quarto-table-cell-role="th">D-N</th>
+<th data-quarto-table-cell-role="th">DJF</th>
+<th data-quarto-table-cell-role="th">MAM</th>
+<th data-quarto-table-cell-role="th">JJA</th>
+<th data-quarto-table-cell-role="th">SON</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1880</td>
+<td>-0.37</td>
+<td>-0.52</td>
+<td>-0.24</td>
+<td>-0.31</td>
+<td>-0.07</td>
+<td>-0.17</td>
+<td>-0.19</td>
+<td>-0.27</td>
+<td>-0.24</td>
+<td>-0.33</td>
+<td>-0.44</td>
+<td>-0.41</td>
+<td>-0.30</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>-0.20</td>
+<td>-0.21</td>
+<td>-0.34</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1881</td>
+<td>-0.32</td>
+<td>-0.24</td>
+<td>-0.05</td>
+<td>-0.01</td>
+<td>0.02</td>
+<td>-0.34</td>
+<td>0.07</td>
+<td>-0.05</td>
+<td>-0.27</td>
+<td>-0.45</td>
+<td>-0.38</td>
+<td>-0.25</td>
+<td>-0.19</td>
+<td>-0.20</td>
+<td>-0.32</td>
+<td>-0.01</td>
+<td>-0.11</td>
+<td>-0.37</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1882</td>
+<td>0.24</td>
+<td>0.20</td>
+<td>0.01</td>
+<td>-0.31</td>
+<td>-0.24</td>
+<td>-0.29</td>
+<td>-0.29</td>
+<td>-0.17</td>
+<td>-0.27</td>
+<td>-0.53</td>
+<td>-0.35</td>
+<td>-0.70</td>
+<td>-0.22</td>
+<td>-0.19</td>
+<td>0.06</td>
+<td>-0.18</td>
+<td>-0.25</td>
+<td>-0.38</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1883</td>
+<td>-0.59</td>
+<td>-0.67</td>
+<td>-0.16</td>
+<td>-0.31</td>
+<td>-0.26</td>
+<td>-0.12</td>
+<td>-0.06</td>
+<td>-0.23</td>
+<td>-0.35</td>
+<td>-0.17</td>
+<td>-0.45</td>
+<td>-0.16</td>
+<td>-0.30</td>
+<td>-0.34</td>
+<td>-0.65</td>
+<td>-0.24</td>
+<td>-0.14</td>
+<td>-0.33</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1884</td>
+<td>-0.18</td>
+<td>-0.12</td>
+<td>-0.65</td>
+<td>-0.60</td>
+<td>-0.37</td>
+<td>-0.42</td>
+<td>-0.42</td>
+<td>-0.52</td>
+<td>-0.46</td>
+<td>-0.45</td>
+<td>-0.58</td>
+<td>-0.48</td>
+<td>-0.44</td>
+<td>-0.41</td>
+<td>-0.15</td>
+<td>-0.54</td>
+<td>-0.45</td>
+<td>-0.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">139</td>
+<td>2019</td>
+<td>1.20</td>
+<td>1.12</td>
+<td>1.55</td>
+<td>1.25</td>
+<td>0.98</td>
+<td>1.19</td>
+<td>1.03</td>
+<td>1.09</td>
+<td>1.21</td>
+<td>1.30</td>
+<td>1.20</td>
+<td>1.39</td>
+<td>1.21</td>
+<td>1.18</td>
+<td>1.14</td>
+<td>1.26</td>
+<td>1.10</td>
+<td>1.24</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">140</td>
+<td>2020</td>
+<td>1.59</td>
+<td>1.71</td>
+<td>1.66</td>
+<td>1.40</td>
+<td>1.28</td>
+<td>1.13</td>
+<td>1.10</td>
+<td>1.13</td>
+<td>1.20</td>
+<td>1.21</td>
+<td>1.61</td>
+<td>1.23</td>
+<td>1.35</td>
+<td>1.37</td>
+<td>1.56</td>
+<td>1.45</td>
+<td>1.12</td>
+<td>1.34</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">141</td>
+<td>2021</td>
+<td>1.26</td>
+<td>0.96</td>
+<td>1.20</td>
+<td>1.13</td>
+<td>1.04</td>
+<td>1.21</td>
+<td>1.07</td>
+<td>1.03</td>
+<td>1.06</td>
+<td>1.31</td>
+<td>1.31</td>
+<td>1.14</td>
+<td>1.14</td>
+<td>1.15</td>
+<td>1.15</td>
+<td>1.12</td>
+<td>1.10</td>
+<td>1.23</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">142</td>
+<td>2022</td>
+<td>1.25</td>
+<td>1.17</td>
+<td>1.43</td>
+<td>1.09</td>
+<td>1.01</td>
+<td>1.13</td>
+<td>1.05</td>
+<td>1.17</td>
+<td>1.16</td>
+<td>1.32</td>
+<td>1.10</td>
+<td>1.07</td>
+<td>1.16</td>
+<td>1.17</td>
+<td>1.19</td>
+<td>1.18</td>
+<td>1.12</td>
+<td>1.19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">143</td>
+<td>2023</td>
+<td>1.29</td>
+<td>1.32</td>
+<td>1.60</td>
+<td>1.02</td>
+<td>1.12</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.23</td>
+<td>1.25</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>144 rows × 19 columns</p>
+</div>
+</div>
+</div>
+<div id="load-nh-description" class="cell" data-message="false" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>|  variable  |  class  |        description         |
+|:----------:|:-------:|:--------------------------:|
+|    Year    | double  |            Year            |
+|    Jan     | double  |          January           |
+|    Feb     | double  |          February          |
+|    Mar     | double  |           March            |
+|    Apr     | double  |           April            |
+|    May     | double  |            May             |
+|    Jun     | double  |            June            |
+|    Jul     | double  |            July            |
+|    Aug     | double  |           August           |
+|    Sep     | double  |         September          |
+|    Oct     | double  |          October           |
+|    Nov     | double  |          November          |
+|    Dec     | double  |          December          |
+|    J-D     | double  |      January-December      |
+|    D-N     | double  |     Decemeber-November     |
+|    DJF     | double  | December-January-February  |
+|    MAM     | double  |      March-April-May       |
+|    JJA     | double  |      June-July-August      |
+|    SON     | double  | September-October-November |</code></pre>
+</div>
+</div>
+</section>
+<section id="southern-hemisphere-annomalies-and-description" class="level4">
+<h4 class="anchored" data-anchor-id="southern-hemisphere-annomalies-and-description">Southern Hemisphere Annomalies and Description</h4>
+<div id="cell-load-sh" class="cell" data-message="false" data-execution_count="5">
+<div id="load-sh" class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Jan</th>
+<th data-quarto-table-cell-role="th">Feb</th>
+<th data-quarto-table-cell-role="th">Mar</th>
+<th data-quarto-table-cell-role="th">Apr</th>
+<th data-quarto-table-cell-role="th">May</th>
+<th data-quarto-table-cell-role="th">Jun</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">Aug</th>
+<th data-quarto-table-cell-role="th">Sep</th>
+<th data-quarto-table-cell-role="th">Oct</th>
+<th data-quarto-table-cell-role="th">Nov</th>
+<th data-quarto-table-cell-role="th">Dec</th>
+<th data-quarto-table-cell-role="th">J-D</th>
+<th data-quarto-table-cell-role="th">D-N</th>
+<th data-quarto-table-cell-role="th">DJF</th>
+<th data-quarto-table-cell-role="th">MAM</th>
+<th data-quarto-table-cell-role="th">JJA</th>
+<th data-quarto-table-cell-role="th">SON</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1880</td>
+<td>0.00</td>
+<td>0.03</td>
+<td>0.06</td>
+<td>-0.02</td>
+<td>-0.13</td>
+<td>-0.25</td>
+<td>-0.17</td>
+<td>0.06</td>
+<td>-0.05</td>
+<td>-0.15</td>
+<td>0.00</td>
+<td>0.05</td>
+<td>-0.05</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>-0.03</td>
+<td>-0.12</td>
+<td>-0.07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1881</td>
+<td>-0.09</td>
+<td>-0.06</td>
+<td>0.09</td>
+<td>0.10</td>
+<td>0.08</td>
+<td>-0.06</td>
+<td>-0.08</td>
+<td>-0.03</td>
+<td>-0.05</td>
+<td>-0.01</td>
+<td>0.00</td>
+<td>0.09</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>-0.03</td>
+<td>0.09</td>
+<td>-0.05</td>
+<td>-0.02</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1882</td>
+<td>0.07</td>
+<td>0.07</td>
+<td>0.07</td>
+<td>-0.02</td>
+<td>-0.04</td>
+<td>-0.15</td>
+<td>-0.05</td>
+<td>0.01</td>
+<td>-0.05</td>
+<td>0.03</td>
+<td>-0.01</td>
+<td>-0.07</td>
+<td>-0.01</td>
+<td>0.00</td>
+<td>0.08</td>
+<td>0.00</td>
+<td>-0.06</td>
+<td>-0.01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1883</td>
+<td>-0.02</td>
+<td>-0.08</td>
+<td>-0.09</td>
+<td>-0.07</td>
+<td>-0.10</td>
+<td>-0.02</td>
+<td>-0.09</td>
+<td>-0.05</td>
+<td>-0.11</td>
+<td>-0.06</td>
+<td>-0.04</td>
+<td>-0.06</td>
+<td>-0.07</td>
+<td>-0.07</td>
+<td>-0.06</td>
+<td>-0.09</td>
+<td>-0.05</td>
+<td>-0.07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1884</td>
+<td>-0.09</td>
+<td>-0.06</td>
+<td>-0.10</td>
+<td>-0.22</td>
+<td>-0.32</td>
+<td>-0.30</td>
+<td>-0.22</td>
+<td>-0.07</td>
+<td>-0.11</td>
+<td>-0.07</td>
+<td>-0.11</td>
+<td>-0.15</td>
+<td>-0.15</td>
+<td>-0.14</td>
+<td>-0.07</td>
+<td>-0.21</td>
+<td>-0.19</td>
+<td>-0.10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">139</td>
+<td>2019</td>
+<td>0.67</td>
+<td>0.78</td>
+<td>0.79</td>
+<td>0.79</td>
+<td>0.73</td>
+<td>0.63</td>
+<td>0.86</td>
+<td>0.81</td>
+<td>0.65</td>
+<td>0.73</td>
+<td>0.80</td>
+<td>0.79</td>
+<td>0.75</td>
+<td>0.75</td>
+<td>0.73</td>
+<td>0.77</td>
+<td>0.77</td>
+<td>0.73</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">140</td>
+<td>2020</td>
+<td>0.76</td>
+<td>0.78</td>
+<td>0.68</td>
+<td>0.86</td>
+<td>0.76</td>
+<td>0.72</td>
+<td>0.70</td>
+<td>0.64</td>
+<td>0.78</td>
+<td>0.57</td>
+<td>0.60</td>
+<td>0.40</td>
+<td>0.69</td>
+<td>0.72</td>
+<td>0.78</td>
+<td>0.76</td>
+<td>0.68</td>
+<td>0.65</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">141</td>
+<td>2021</td>
+<td>0.36</td>
+<td>0.32</td>
+<td>0.57</td>
+<td>0.39</td>
+<td>0.54</td>
+<td>0.49</td>
+<td>0.77</td>
+<td>0.62</td>
+<td>0.80</td>
+<td>0.68</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>0.56</td>
+<td>0.54</td>
+<td>0.36</td>
+<td>0.50</td>
+<td>0.63</td>
+<td>0.68</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">142</td>
+<td>2022</td>
+<td>0.57</td>
+<td>0.61</td>
+<td>0.67</td>
+<td>0.59</td>
+<td>0.67</td>
+<td>0.72</td>
+<td>0.81</td>
+<td>0.74</td>
+<td>0.64</td>
+<td>0.62</td>
+<td>0.36</td>
+<td>0.53</td>
+<td>0.63</td>
+<td>0.63</td>
+<td>0.58</td>
+<td>0.64</td>
+<td>0.76</td>
+<td>0.54</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">143</td>
+<td>2023</td>
+<td>0.44</td>
+<td>0.63</td>
+<td>0.80</td>
+<td>0.98</td>
+<td>0.77</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.53</td>
+<td>0.85</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>144 rows × 19 columns</p>
+</div>
+</div>
+</div>
+<div id="load-sh-description" class="cell" data-message="false" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>|  variable  |  class  |        description         |
+|:----------:|:-------:|:--------------------------:|
+|    Year    | double  |            Year            |
+|    Jan     | double  |          January           |
+|    Feb     | double  |          February          |
+|    Mar     | double  |           March            |
+|    Apr     | double  |           April            |
+|    May     | double  |            May             |
+|    Jun     | double  |            June            |
+|    Jul     | double  |            July            |
+|    Aug     | double  |           August           |
+|    Sep     | double  |         September          |
+|    Oct     | double  |          October           |
+|    Nov     | double  |          November          |
+|    Dec     | double  |          December          |
+|    J-D     | double  |      January-December      |
+|    D-N     | double  |     Decemeber-November     |
+|    DJF     | double  | December-January-February  |
+|    MAM     | double  |      March-April-May       |
+|    JJA     | double  |      June-July-August      |
+|    SON     | double  | September-October-November |</code></pre>
+</div>
+</div>
+</section>
+<section id="zonnal-annomalies-and-description" class="level4">
+<h4 class="anchored" data-anchor-id="zonnal-annomalies-and-description">Zonnal Annomalies and Description</h4>
+<div id="cell-load-zonann" class="cell" data-message="false" data-execution_count="7">
+<div id="load-zonann" class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Glob</th>
+<th data-quarto-table-cell-role="th">NHem</th>
+<th data-quarto-table-cell-role="th">SHem</th>
+<th data-quarto-table-cell-role="th">24N-90N</th>
+<th data-quarto-table-cell-role="th">24S-24N</th>
+<th data-quarto-table-cell-role="th">90S-24S</th>
+<th data-quarto-table-cell-role="th">64N-90N</th>
+<th data-quarto-table-cell-role="th">44N-64N</th>
+<th data-quarto-table-cell-role="th">24N-44N</th>
+<th data-quarto-table-cell-role="th">EQU-24N</th>
+<th data-quarto-table-cell-role="th">24S-EQU</th>
+<th data-quarto-table-cell-role="th">44S-24S</th>
+<th data-quarto-table-cell-role="th">64S-44S</th>
+<th data-quarto-table-cell-role="th">90S-64S</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1880</td>
+<td>-0.17</td>
+<td>-0.30</td>
+<td>-0.05</td>
+<td>-0.39</td>
+<td>-0.13</td>
+<td>-0.01</td>
+<td>-0.82</td>
+<td>-0.50</td>
+<td>-0.30</td>
+<td>-0.15</td>
+<td>-0.11</td>
+<td>-0.04</td>
+<td>0.05</td>
+<td>0.66</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1881</td>
+<td>-0.09</td>
+<td>-0.19</td>
+<td>0.00</td>
+<td>-0.37</td>
+<td>0.10</td>
+<td>-0.07</td>
+<td>-0.92</td>
+<td>-0.47</td>
+<td>-0.23</td>
+<td>0.10</td>
+<td>0.10</td>
+<td>-0.05</td>
+<td>-0.07</td>
+<td>0.59</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1882</td>
+<td>-0.11</td>
+<td>-0.22</td>
+<td>-0.01</td>
+<td>-0.33</td>
+<td>-0.05</td>
+<td>0.01</td>
+<td>-1.41</td>
+<td>-0.28</td>
+<td>-0.18</td>
+<td>-0.05</td>
+<td>-0.05</td>
+<td>0.01</td>
+<td>0.04</td>
+<td>0.62</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1883</td>
+<td>-0.18</td>
+<td>-0.30</td>
+<td>-0.07</td>
+<td>-0.37</td>
+<td>-0.17</td>
+<td>-0.01</td>
+<td>-0.19</td>
+<td>-0.57</td>
+<td>-0.29</td>
+<td>-0.18</td>
+<td>-0.16</td>
+<td>-0.04</td>
+<td>0.07</td>
+<td>0.49</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1884</td>
+<td>-0.29</td>
+<td>-0.44</td>
+<td>-0.15</td>
+<td>-0.62</td>
+<td>-0.15</td>
+<td>-0.14</td>
+<td>-1.31</td>
+<td>-0.65</td>
+<td>-0.49</td>
+<td>-0.12</td>
+<td>-0.17</td>
+<td>-0.19</td>
+<td>-0.02</td>
+<td>0.64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">138</td>
+<td>2018</td>
+<td>0.85</td>
+<td>1.03</td>
+<td>0.67</td>
+<td>1.24</td>
+<td>0.68</td>
+<td>0.69</td>
+<td>2.13</td>
+<td>1.09</td>
+<td>1.05</td>
+<td>0.73</td>
+<td>0.63</td>
+<td>0.80</td>
+<td>0.37</td>
+<td>0.97</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">139</td>
+<td>2019</td>
+<td>0.98</td>
+<td>1.21</td>
+<td>0.75</td>
+<td>1.42</td>
+<td>0.90</td>
+<td>0.65</td>
+<td>2.70</td>
+<td>1.43</td>
+<td>0.99</td>
+<td>0.91</td>
+<td>0.89</td>
+<td>0.75</td>
+<td>0.39</td>
+<td>0.86</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">140</td>
+<td>2020</td>
+<td>1.02</td>
+<td>1.35</td>
+<td>0.69</td>
+<td>1.67</td>
+<td>0.86</td>
+<td>0.58</td>
+<td>2.90</td>
+<td>1.82</td>
+<td>1.19</td>
+<td>0.89</td>
+<td>0.84</td>
+<td>0.59</td>
+<td>0.39</td>
+<td>0.92</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">141</td>
+<td>2021</td>
+<td>0.85</td>
+<td>1.14</td>
+<td>0.56</td>
+<td>1.42</td>
+<td>0.66</td>
+<td>0.53</td>
+<td>2.04</td>
+<td>1.36</td>
+<td>1.26</td>
+<td>0.73</td>
+<td>0.59</td>
+<td>0.73</td>
+<td>0.32</td>
+<td>0.31</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">142</td>
+<td>2022</td>
+<td>0.90</td>
+<td>1.16</td>
+<td>0.63</td>
+<td>1.52</td>
+<td>0.57</td>
+<td>0.71</td>
+<td>2.33</td>
+<td>1.51</td>
+<td>1.27</td>
+<td>0.63</td>
+<td>0.51</td>
+<td>0.79</td>
+<td>0.39</td>
+<td>1.12</td>
+</tr>
+</tbody>
+</table>
+
+<p>143 rows × 15 columns</p>
+</div>
+</div>
+</div>
+<div id="load-zonann-description" class="cell" data-message="false" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>|  variable  |  class  |     description     |
+|:----------:|:-------:|:-------------------:|
+|    Year    | double  |        Year         |
+|    Glob    | double  |       Global        |
+|    NHem    | double  | Northern Hemisphere |
+|    SHem    | double  | Southern Hemisphere |
+|  24N-90N   | double  |  24N-90N lattitude  |
+|  24S-24N   | double  |  24S-24N lattitude  |
+|  90S-24S   | double  |  90S-24S lattitude  |
+|  64N-90N   | double  |  64N-90N lattitude  |
+|  44N-64N   | double  |  44N-64N lattitude  |
+|  24N-44N   | double  |  24N-44N lattitude  |
+|  EQU-24N   | double  |  EQU-24N lattitude  |
+|  24S-EQU   | double  |  24S-EQU lattitude  |
+|  44S-24S   | double  |  44S-24S lattitude  |
+|  64S-44S   | double  |  64S-44S lattitude  |
+|  90S-64S   | double  |  90S-64S lattitude  |</code></pre>
+</div>
+</div>
 </section>
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<p>The two questions you want to answer.</p>
+<ol type="1">
+<li><p>What are the summary statistics (mean, standard deviations, and IQR) of zonal annual temperatures anomalies?</p></li>
+<li><p>What are the summary statistics (mean, standard deviations, and IQR) of hemispheric monthly (seasonal) temperature annomalies?</p></li>
+</ol>
 </section>
 <section id="analysis-plan" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-plan">Analysis plan</h2>
-<ul>
-<li>A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).</li>
-</ul>
+<ol type="1">
+<li><p>We should use variables inside the zonnan_temps.csv dataset. Initially, we should transform the data from a wide format to a long format by defining a new column called zones and merging all eight variables related to zones (i.e.&nbsp;24N-44N, …) to that column. As we are focusing on annual zonal anomalies in this qustion, we can skip Glob, NHem, and SHem variables. Finally, we would have a dataframe with three columns with one represnting year,one represnting zone and the last contains the annomalies. We can draw eight boxplots (one boxplot for each zone) to comapre the zonnal IQR and median anomalies. We can also compute and compare mean and standard deviation of annual zonal anomalies.</p></li>
+<li><p>We should use nh_temps.csv and sh_temps.csv datasets. We should start by converting the dataset of each hemispheres to a long format by defining one new column for month (season). Finally, we can merge the dataframes vertically to arrive at a one dataframe. We can create two line plot of mean and standard deviation of anomalies for each month (season) and each hemisphere. Also, we can have 12 (4) couples of boxplots to compare IQR and median of each month (season) in both hemispheres.</p></li>
+</ol>
 
 
 </section>
@@ -281,10 +1137,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -294,8 +1149,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -308,6 +1172,120 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -351,6 +1329,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -376,6 +1355,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -436,6 +1441,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
