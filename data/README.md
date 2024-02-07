@@ -1,10 +1,3 @@
----
-title: "Global Temperature Datasets"
-format: html
-editor: visual
-jupyter: python3
----
-
 # Dataset Description
 
 This repository contains datasets about temperature changes across different geographical zones of the Earth, sourced from the TidyTuesday project. The temperature datasets were featured in the week of July 11, 2023, available on their GitHub repository [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-07-11).
