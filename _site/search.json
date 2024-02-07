@@ -14,6 +14,20 @@
     "text": "The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly."
   },
   {
+    "objectID": "proposal.html#dataset",
+    "href": "proposal.html#dataset",
+    "title": "Global Temperature Analysis",
+    "section": "Dataset",
+    "text": "Dataset\nThe dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly. The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022.\nAnalyzing these datasets can help us understand the past and present climate trends and potentially predict future patterns.The datasets provide a comprehensive view of temperature changes from different perspectives - global, Northern Hemisphere, Southern Hemisphere, and zonal annual temperatures. Moreover, one of the team members is very familiar with spatial-temporal datasets as he is doing a Ph.D. in hydrology and atmospheric sciences; hence, having good domain knowledge can help us ask reasonable questions and do the analysis faster."
+  },
+  {
+    "objectID": "proposal.html#questions",
+    "href": "proposal.html#questions",
+    "title": "Global Temperature Analysis",
+    "section": "Questions",
+    "text": "Questions\n\nHow have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?\nHow have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?"
+  },
+  {
     "objectID": "proposal.html#analysis-plan",
     "href": "proposal.html#analysis-plan",
     "title": "Global Temperature Analysis",
@@ -103,19 +117,5 @@
     "title": "Global Temperature Analysis",
     "section": "",
     "text": "This project was developed by Weather Gurus For INFO 523 - Data Mining and Discovery at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nMohammad Farmani: second year PhD student in Hydrology and Atmospheric Sciences(HAS).\nDeema Albluwi: second year PhD student in Computational Linguistics.\nRemi Hendershott: first year master’s student in Information Science, with focus on HCI, seeking a career in UX/UI design.\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nPriom Mahmud: second year PhD student in Systems and Industrial Engineering."
-  },
-  {
-    "objectID": "proposal.html#questions",
-    "href": "proposal.html#questions",
-    "title": "Global Temperature Analysis",
-    "section": "Questions",
-    "text": "Questions\n\nHow have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?\nHow have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?"
-  },
-  {
-    "objectID": "proposal.html#dataset",
-    "href": "proposal.html#dataset",
-    "title": "Global Temperature Analysis",
-    "section": "Dataset",
-    "text": "Dataset\nThe dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly. The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022.\nAnalyzing these datasets can help us understand the past and present climate trends and potentially predict future patterns.The datasets provide a comprehensive view of temperature changes from different perspectives - global, Northern Hemisphere, Southern Hemisphere, and zonal annual temperatures. Moreover, one of the team members is very familiar with spatial-temporal datasets as he is doing a Ph.D. in hydrology and atmospheric sciences; hence, having good domain knowledge can help us ask reasonable questions and do the analysis faster."
   }
 ]

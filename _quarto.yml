@@ -6,7 +6,7 @@ website:
   navbar:
     right:
       - icon: github
-        href: https://github.com/INFO523-S24/project-01
+        href: https://github.com/INFO523-S24/project-01-Weather-Gurus
     left:
       - text: Project
         href: index.qmd
