@@ -25,7 +25,8 @@ The dataset is provided by NASA by combining land-surface, sea surface, and air 
 ---
 
 ::: {style="text-align: justify;"}
-##Dataset
+
+## Dataset
 
 The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly.
 The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. 
@@ -34,6 +35,7 @@ The dataset contains four CSV files, providing temperature anomalies across diff
 :::
 
 ----
+
 ## Questions
 
 1. How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?
