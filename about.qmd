@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Global Temperature Analysis"
 format: html
 editor: visual
 jupyter: python3
@@ -7,8 +7,7 @@ jupyter: python3
 
 This project was developed by **Weather Gurus** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
--   Team member 1: One sentence description of Team member 1 (e.g., year, major, etc.).
-
+-   Deema Albluwi: second year PhD student in Computational Linguistics.
 -   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.).
 
 -   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
