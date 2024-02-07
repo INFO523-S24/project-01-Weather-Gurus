@@ -99,16 +99,18 @@ print(tabulate(zonann_temps_description, headers='keys', tablefmt='pipe', showin
 
 ## Questions
 
-1. What are the summary statistics (mean, standard deviations, and IQR) of zonal annual temperatures anomalies?
+1. How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? 
 
-2. What are the summary statistics (mean, standard deviations, and IQR) of hemispheric monthly (seasonal) temperature annomalies?
+2. How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?
+
 
 ## Analysis plan
 
-1.  We should use variables inside the zonnan_temps.csv dataset. Initially, we should transform the data from a wide format to a long format by defining a new column called zones and merging all eight variables related to zones (i.e. 24N-44N, …) to that column. As we are focusing on annual zonal anomalies in this qustion, we can skip Glob, NHem, and SHem variables. Finally, we would have a dataframe with three columns with one represnting year,one represnting zone and the last contains the annomalies.
-We can draw eight boxplots (one boxplot for each zone) to comapre the zonnal IQR and median anomalies. We can also compute and compare mean and standard deviation of annual zonal anomalies.
+1.  We should use variables inside the zonnan_temps.csv dataset. Initially, we should transform the data from a wide format to a long format by defining a new column called zones and merging all eight variables related to zones (i.e. 24N-44N, …) to that column. As we are focusing on annual zonal anomalies in this qustion, we can skip Glob, NHem, and SHem variables. Finally, we would have a dataframe with three columns with one represnting year, one represnting zone and the last contains the annomalies.
+We can create time series for each zone to visualize the pattern of zonal annual temperature anomalies, emphasizing any noticeable trends or deviation from zonal long-term mean anomaly. Also, we can employ heatmaps to map the variance of the zonal annual temperature anomaly on top of countries and oceans boundaries to show which hemisphere behaves more erratically.
 
-2. We should use nh_temps.csv and sh_temps.csv datasets. We should start by converting the dataset of each hemispheres to a long format by defining one new column for month (season). Finally, we can merge the dataframes vertically to arrive at a one dataframe. 
-We can create two line plot of mean and standard deviation of anomalies for each month (season) and each hemisphere. Also, we can have 12 (4) couples of boxplots to compare IQR and median of each month (season) in both hemispheres.
+
+2. We should use nh_temps.csv and sh_temps.csv datasets. We should start by converting the dataset of each hemispheres to a long format by defining one new column for month (season) and one column that shows the hemispheres (NH and SH). Finally, we can merge the dataframes vertically to arrive at a one comprehensive dataframe. 
+We can compare the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. We can use time series, box plots, or histograms to illustrate and compare the time series and statistical distribution of seasonal temperature anomalies in the northern and southern hemispheres to discuss how different and similar they are. It may be interesting to create a similar visualization to the previous question with deviation from long-term anomalies. This would not only capture how seasonal temperatures have strayed from some long-term average, but how temperatures are fluctuating relative to even temporally local averages
 
 
