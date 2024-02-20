@@ -29,9 +29,82 @@ from tabulate import tabulate
 ## Dataset
 
 The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly.
-The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. 
-
+The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. Below you can find the datasets and a brief description of the variables.
 :::
+
+```{python}
+#| label: load-dataset
+#| message: false
+#| echo: false
+
+# Read in manually
+global_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/global_temps.csv')
+nh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/nh_temps.csv')
+sh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/sh_temps.csv')
+zonann_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv')
+
+global_temps_description = pd.read_csv("data/global_temps_description.csv")
+nh_temps_description = pd.read_csv("data/nh_temps_description.csv")
+sh_temps_description = pd.read_csv("data/sh_temps_description.csv")
+zonann_temps_description = pd.read_csv("data/zonann_temps_description.csv")
+```
+
+#### Northern Hemisphere Annomalies and Description
+```{python}
+#| label: load-nh
+#| message: false
+#| echo: false
+
+nh_temps
+
+```
+
+```{python}
+#| label: load-nh-description
+#| message: false
+#| echo: false
+
+print(tabulate(nh_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+
+```
+
+#### Southern Hemisphere Annomalies and Description
+```{python}
+#| label: load-sh
+#| message: false
+#| echo: false
+
+sh_temps
+
+```
+
+```{python}
+#| label: load-sh-description
+#| message: false
+#| echo: false
+
+print(tabulate(sh_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+
+```
+
+#### Zonnal Annomalies and Description
+```{python}
+#| label: load-zonann
+#| message: false
+#| echo: false
+
+zonann_temps
+
+```
+
+```{python}
+#| label: load-zonann-description
+#| message: false
+#| echo: false
+
+print(tabulate(zonann_temps_description, headers='keys', tablefmt='pipe', showindex=False, stralign='center'))
+
+```
 
 
 ----
@@ -69,7 +142,7 @@ The dataset contains four CSV files, providing temperature anomalies across diff
 
 - **Time Series Analysis**: To compare 2023 temperature anomalies against historical records.
 
-- **Trend Analysis**: Employing linear regression to assess temperature anomaly trends over the years, including 2023.
+- **Trend Analysis**: Employing time series analysis to assess temperature anomaly trends over the years, including 2023.
 
 - **Comparative Analysis**: Comparing 2023 average temperature anomalies against historical maxima for global and hemispheric analyses, and evaluating cool and warm season anomalies.
 

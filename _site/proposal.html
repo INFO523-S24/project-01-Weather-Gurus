@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.540">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -66,6 +66,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -106,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/INFO523-S24/project-01"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/INFO523-S24/project-01-Weather-Gurus"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -158,15 +161,886 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly.</p>
+<p>NASA has announced that <strong>2023 was the warmest year on record</strong>, as detailed in their recent <a href="https://www.nasa.gov/news-release/nasa-analysis-confirms-2023-as-warmest-year-on-record/">announcement</a>. Utilizing global surface temperature data, including the latest updates for 2023 from the NASA GISS Surface Temperature Analysis (GISTEMP v4), we aim to validate this claim through statistical analysis and comparison against historical temperature records. This endeavor not only highlights the ongoing trends in global warming but also underscores the critical importance of addressing climate change.</p>
 <hr>
 </section>
 <section id="dataset" class="level2" style="text-align: justify;">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly. The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022.</p>
-<p>Analyzing these datasets can help us understand the past and present climate trends and potentially predict future patterns.The datasets provide a comprehensive view of temperature changes from different perspectives - global, Northern Hemisphere, Southern Hemisphere, and zonal annual temperatures. Moreover, one of the team members is very familiar with spatial-temporal datasets as he is doing a Ph.D.&nbsp;in hydrology and atmospheric sciences; hence, having good domain knowledge can help us ask reasonable questions and do the analysis faster.</p>
+<p>The dataset is provided by NASA by combining land-surface, sea surface, and air temperature anomalies. The values in the dataset are deviations from the corresponding 1951-1980 means, indicating how much warmer or colder it is than normal for a particular place and time, and the normal means the average over the 30 years 1951-1980 for that place and time of year. More precisely, the base 1951-1980 mean is subtracted from the absolute temperature to get the anomaly. The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. Below you can find the datasets and a brief description of the variables.</p>
 </section>
+<section id="northern-hemisphere-annomalies-and-description" class="level4">
+<h4 class="anchored" data-anchor-id="northern-hemisphere-annomalies-and-description">Northern Hemisphere Annomalies and Description</h4>
+<div id="cell-load-nh" class="cell" data-message="false" data-execution_count="3">
+<div id="load-nh" class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Jan</th>
+<th data-quarto-table-cell-role="th">Feb</th>
+<th data-quarto-table-cell-role="th">Mar</th>
+<th data-quarto-table-cell-role="th">Apr</th>
+<th data-quarto-table-cell-role="th">May</th>
+<th data-quarto-table-cell-role="th">Jun</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">Aug</th>
+<th data-quarto-table-cell-role="th">Sep</th>
+<th data-quarto-table-cell-role="th">Oct</th>
+<th data-quarto-table-cell-role="th">Nov</th>
+<th data-quarto-table-cell-role="th">Dec</th>
+<th data-quarto-table-cell-role="th">J-D</th>
+<th data-quarto-table-cell-role="th">D-N</th>
+<th data-quarto-table-cell-role="th">DJF</th>
+<th data-quarto-table-cell-role="th">MAM</th>
+<th data-quarto-table-cell-role="th">JJA</th>
+<th data-quarto-table-cell-role="th">SON</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1880</td>
+<td>-0.37</td>
+<td>-0.52</td>
+<td>-0.24</td>
+<td>-0.31</td>
+<td>-0.07</td>
+<td>-0.17</td>
+<td>-0.19</td>
+<td>-0.27</td>
+<td>-0.24</td>
+<td>-0.33</td>
+<td>-0.44</td>
+<td>-0.41</td>
+<td>-0.30</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>-0.20</td>
+<td>-0.21</td>
+<td>-0.34</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1881</td>
+<td>-0.32</td>
+<td>-0.24</td>
+<td>-0.05</td>
+<td>-0.01</td>
+<td>0.02</td>
+<td>-0.34</td>
+<td>0.07</td>
+<td>-0.05</td>
+<td>-0.27</td>
+<td>-0.45</td>
+<td>-0.38</td>
+<td>-0.25</td>
+<td>-0.19</td>
+<td>-0.20</td>
+<td>-0.32</td>
+<td>-0.01</td>
+<td>-0.11</td>
+<td>-0.37</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1882</td>
+<td>0.24</td>
+<td>0.20</td>
+<td>0.01</td>
+<td>-0.31</td>
+<td>-0.24</td>
+<td>-0.29</td>
+<td>-0.29</td>
+<td>-0.17</td>
+<td>-0.27</td>
+<td>-0.53</td>
+<td>-0.35</td>
+<td>-0.70</td>
+<td>-0.22</td>
+<td>-0.19</td>
+<td>0.06</td>
+<td>-0.18</td>
+<td>-0.25</td>
+<td>-0.38</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1883</td>
+<td>-0.59</td>
+<td>-0.67</td>
+<td>-0.16</td>
+<td>-0.31</td>
+<td>-0.26</td>
+<td>-0.12</td>
+<td>-0.06</td>
+<td>-0.23</td>
+<td>-0.35</td>
+<td>-0.17</td>
+<td>-0.45</td>
+<td>-0.16</td>
+<td>-0.30</td>
+<td>-0.34</td>
+<td>-0.65</td>
+<td>-0.24</td>
+<td>-0.14</td>
+<td>-0.33</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1884</td>
+<td>-0.18</td>
+<td>-0.12</td>
+<td>-0.65</td>
+<td>-0.60</td>
+<td>-0.37</td>
+<td>-0.42</td>
+<td>-0.42</td>
+<td>-0.52</td>
+<td>-0.46</td>
+<td>-0.45</td>
+<td>-0.58</td>
+<td>-0.48</td>
+<td>-0.44</td>
+<td>-0.41</td>
+<td>-0.15</td>
+<td>-0.54</td>
+<td>-0.45</td>
+<td>-0.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">139</td>
+<td>2019</td>
+<td>1.20</td>
+<td>1.12</td>
+<td>1.55</td>
+<td>1.25</td>
+<td>0.98</td>
+<td>1.19</td>
+<td>1.03</td>
+<td>1.09</td>
+<td>1.21</td>
+<td>1.30</td>
+<td>1.20</td>
+<td>1.39</td>
+<td>1.21</td>
+<td>1.18</td>
+<td>1.14</td>
+<td>1.26</td>
+<td>1.10</td>
+<td>1.24</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">140</td>
+<td>2020</td>
+<td>1.59</td>
+<td>1.71</td>
+<td>1.66</td>
+<td>1.40</td>
+<td>1.28</td>
+<td>1.13</td>
+<td>1.10</td>
+<td>1.13</td>
+<td>1.20</td>
+<td>1.21</td>
+<td>1.61</td>
+<td>1.23</td>
+<td>1.35</td>
+<td>1.37</td>
+<td>1.56</td>
+<td>1.45</td>
+<td>1.12</td>
+<td>1.34</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">141</td>
+<td>2021</td>
+<td>1.26</td>
+<td>0.96</td>
+<td>1.20</td>
+<td>1.13</td>
+<td>1.04</td>
+<td>1.21</td>
+<td>1.07</td>
+<td>1.03</td>
+<td>1.06</td>
+<td>1.31</td>
+<td>1.31</td>
+<td>1.14</td>
+<td>1.14</td>
+<td>1.15</td>
+<td>1.15</td>
+<td>1.12</td>
+<td>1.10</td>
+<td>1.23</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">142</td>
+<td>2022</td>
+<td>1.25</td>
+<td>1.17</td>
+<td>1.43</td>
+<td>1.09</td>
+<td>1.01</td>
+<td>1.13</td>
+<td>1.05</td>
+<td>1.17</td>
+<td>1.16</td>
+<td>1.32</td>
+<td>1.10</td>
+<td>1.07</td>
+<td>1.16</td>
+<td>1.17</td>
+<td>1.19</td>
+<td>1.18</td>
+<td>1.12</td>
+<td>1.19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">143</td>
+<td>2023</td>
+<td>1.29</td>
+<td>1.32</td>
+<td>1.60</td>
+<td>1.02</td>
+<td>1.12</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.23</td>
+<td>1.25</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>144 rows × 19 columns</p>
+</div>
+</div>
+</div>
+<div id="load-nh-description" class="cell" data-message="false" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>|  variable  |  class  |        description         |
+|:----------:|:-------:|:--------------------------:|
+|    Year    | double  |            Year            |
+|    Jan     | double  |          January           |
+|    Feb     | double  |          February          |
+|    Mar     | double  |           March            |
+|    Apr     | double  |           April            |
+|    May     | double  |            May             |
+|    Jun     | double  |            June            |
+|    Jul     | double  |            July            |
+|    Aug     | double  |           August           |
+|    Sep     | double  |         September          |
+|    Oct     | double  |          October           |
+|    Nov     | double  |          November          |
+|    Dec     | double  |          December          |
+|    J-D     | double  |      January-December      |
+|    D-N     | double  |     Decemeber-November     |
+|    DJF     | double  | December-January-February  |
+|    MAM     | double  |      March-April-May       |
+|    JJA     | double  |      June-July-August      |
+|    SON     | double  | September-October-November |</code></pre>
+</div>
+</div>
+</section>
+<section id="southern-hemisphere-annomalies-and-description" class="level4">
+<h4 class="anchored" data-anchor-id="southern-hemisphere-annomalies-and-description">Southern Hemisphere Annomalies and Description</h4>
+<div id="cell-load-sh" class="cell" data-message="false" data-execution_count="5">
+<div id="load-sh" class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Jan</th>
+<th data-quarto-table-cell-role="th">Feb</th>
+<th data-quarto-table-cell-role="th">Mar</th>
+<th data-quarto-table-cell-role="th">Apr</th>
+<th data-quarto-table-cell-role="th">May</th>
+<th data-quarto-table-cell-role="th">Jun</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">Aug</th>
+<th data-quarto-table-cell-role="th">Sep</th>
+<th data-quarto-table-cell-role="th">Oct</th>
+<th data-quarto-table-cell-role="th">Nov</th>
+<th data-quarto-table-cell-role="th">Dec</th>
+<th data-quarto-table-cell-role="th">J-D</th>
+<th data-quarto-table-cell-role="th">D-N</th>
+<th data-quarto-table-cell-role="th">DJF</th>
+<th data-quarto-table-cell-role="th">MAM</th>
+<th data-quarto-table-cell-role="th">JJA</th>
+<th data-quarto-table-cell-role="th">SON</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1880</td>
+<td>0.00</td>
+<td>0.03</td>
+<td>0.06</td>
+<td>-0.02</td>
+<td>-0.13</td>
+<td>-0.25</td>
+<td>-0.17</td>
+<td>0.06</td>
+<td>-0.05</td>
+<td>-0.15</td>
+<td>0.00</td>
+<td>0.05</td>
+<td>-0.05</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>-0.03</td>
+<td>-0.12</td>
+<td>-0.07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1881</td>
+<td>-0.09</td>
+<td>-0.06</td>
+<td>0.09</td>
+<td>0.10</td>
+<td>0.08</td>
+<td>-0.06</td>
+<td>-0.08</td>
+<td>-0.03</td>
+<td>-0.05</td>
+<td>-0.01</td>
+<td>0.00</td>
+<td>0.09</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>-0.03</td>
+<td>0.09</td>
+<td>-0.05</td>
+<td>-0.02</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1882</td>
+<td>0.07</td>
+<td>0.07</td>
+<td>0.07</td>
+<td>-0.02</td>
+<td>-0.04</td>
+<td>-0.15</td>
+<td>-0.05</td>
+<td>0.01</td>
+<td>-0.05</td>
+<td>0.03</td>
+<td>-0.01</td>
+<td>-0.07</td>
+<td>-0.01</td>
+<td>0.00</td>
+<td>0.08</td>
+<td>0.00</td>
+<td>-0.06</td>
+<td>-0.01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1883</td>
+<td>-0.02</td>
+<td>-0.08</td>
+<td>-0.09</td>
+<td>-0.07</td>
+<td>-0.10</td>
+<td>-0.02</td>
+<td>-0.09</td>
+<td>-0.05</td>
+<td>-0.11</td>
+<td>-0.06</td>
+<td>-0.04</td>
+<td>-0.06</td>
+<td>-0.07</td>
+<td>-0.07</td>
+<td>-0.06</td>
+<td>-0.09</td>
+<td>-0.05</td>
+<td>-0.07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1884</td>
+<td>-0.09</td>
+<td>-0.06</td>
+<td>-0.10</td>
+<td>-0.22</td>
+<td>-0.32</td>
+<td>-0.30</td>
+<td>-0.22</td>
+<td>-0.07</td>
+<td>-0.11</td>
+<td>-0.07</td>
+<td>-0.11</td>
+<td>-0.15</td>
+<td>-0.15</td>
+<td>-0.14</td>
+<td>-0.07</td>
+<td>-0.21</td>
+<td>-0.19</td>
+<td>-0.10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">139</td>
+<td>2019</td>
+<td>0.67</td>
+<td>0.78</td>
+<td>0.79</td>
+<td>0.79</td>
+<td>0.73</td>
+<td>0.63</td>
+<td>0.86</td>
+<td>0.81</td>
+<td>0.65</td>
+<td>0.73</td>
+<td>0.80</td>
+<td>0.79</td>
+<td>0.75</td>
+<td>0.75</td>
+<td>0.73</td>
+<td>0.77</td>
+<td>0.77</td>
+<td>0.73</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">140</td>
+<td>2020</td>
+<td>0.76</td>
+<td>0.78</td>
+<td>0.68</td>
+<td>0.86</td>
+<td>0.76</td>
+<td>0.72</td>
+<td>0.70</td>
+<td>0.64</td>
+<td>0.78</td>
+<td>0.57</td>
+<td>0.60</td>
+<td>0.40</td>
+<td>0.69</td>
+<td>0.72</td>
+<td>0.78</td>
+<td>0.76</td>
+<td>0.68</td>
+<td>0.65</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">141</td>
+<td>2021</td>
+<td>0.36</td>
+<td>0.32</td>
+<td>0.57</td>
+<td>0.39</td>
+<td>0.54</td>
+<td>0.49</td>
+<td>0.77</td>
+<td>0.62</td>
+<td>0.80</td>
+<td>0.68</td>
+<td>0.57</td>
+<td>0.57</td>
+<td>0.56</td>
+<td>0.54</td>
+<td>0.36</td>
+<td>0.50</td>
+<td>0.63</td>
+<td>0.68</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">142</td>
+<td>2022</td>
+<td>0.57</td>
+<td>0.61</td>
+<td>0.67</td>
+<td>0.59</td>
+<td>0.67</td>
+<td>0.72</td>
+<td>0.81</td>
+<td>0.74</td>
+<td>0.64</td>
+<td>0.62</td>
+<td>0.36</td>
+<td>0.53</td>
+<td>0.63</td>
+<td>0.63</td>
+<td>0.58</td>
+<td>0.64</td>
+<td>0.76</td>
+<td>0.54</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">143</td>
+<td>2023</td>
+<td>0.44</td>
+<td>0.63</td>
+<td>0.80</td>
+<td>0.98</td>
+<td>0.77</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.53</td>
+<td>0.85</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+<p>144 rows × 19 columns</p>
+</div>
+</div>
+</div>
+<div id="load-sh-description" class="cell" data-message="false" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>|  variable  |  class  |        description         |
+|:----------:|:-------:|:--------------------------:|
+|    Year    | double  |            Year            |
+|    Jan     | double  |          January           |
+|    Feb     | double  |          February          |
+|    Mar     | double  |           March            |
+|    Apr     | double  |           April            |
+|    May     | double  |            May             |
+|    Jun     | double  |            June            |
+|    Jul     | double  |            July            |
+|    Aug     | double  |           August           |
+|    Sep     | double  |         September          |
+|    Oct     | double  |          October           |
+|    Nov     | double  |          November          |
+|    Dec     | double  |          December          |
+|    J-D     | double  |      January-December      |
+|    D-N     | double  |     Decemeber-November     |
+|    DJF     | double  | December-January-February  |
+|    MAM     | double  |      March-April-May       |
+|    JJA     | double  |      June-July-August      |
+|    SON     | double  | September-October-November |</code></pre>
+</div>
+</div>
+</section>
+<section id="zonnal-annomalies-and-description" class="level4">
+<h4 class="anchored" data-anchor-id="zonnal-annomalies-and-description">Zonnal Annomalies and Description</h4>
+<div id="cell-load-zonann" class="cell" data-message="false" data-execution_count="7">
+<div id="load-zonann" class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Glob</th>
+<th data-quarto-table-cell-role="th">NHem</th>
+<th data-quarto-table-cell-role="th">SHem</th>
+<th data-quarto-table-cell-role="th">24N-90N</th>
+<th data-quarto-table-cell-role="th">24S-24N</th>
+<th data-quarto-table-cell-role="th">90S-24S</th>
+<th data-quarto-table-cell-role="th">64N-90N</th>
+<th data-quarto-table-cell-role="th">44N-64N</th>
+<th data-quarto-table-cell-role="th">24N-44N</th>
+<th data-quarto-table-cell-role="th">EQU-24N</th>
+<th data-quarto-table-cell-role="th">24S-EQU</th>
+<th data-quarto-table-cell-role="th">44S-24S</th>
+<th data-quarto-table-cell-role="th">64S-44S</th>
+<th data-quarto-table-cell-role="th">90S-64S</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1880</td>
+<td>-0.17</td>
+<td>-0.30</td>
+<td>-0.05</td>
+<td>-0.39</td>
+<td>-0.13</td>
+<td>-0.01</td>
+<td>-0.82</td>
+<td>-0.50</td>
+<td>-0.30</td>
+<td>-0.15</td>
+<td>-0.11</td>
+<td>-0.04</td>
+<td>0.05</td>
+<td>0.66</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1881</td>
+<td>-0.09</td>
+<td>-0.19</td>
+<td>0.00</td>
+<td>-0.37</td>
+<td>0.10</td>
+<td>-0.07</td>
+<td>-0.92</td>
+<td>-0.47</td>
+<td>-0.23</td>
+<td>0.10</td>
+<td>0.10</td>
+<td>-0.05</td>
+<td>-0.07</td>
+<td>0.59</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1882</td>
+<td>-0.11</td>
+<td>-0.22</td>
+<td>-0.01</td>
+<td>-0.33</td>
+<td>-0.05</td>
+<td>0.01</td>
+<td>-1.41</td>
+<td>-0.28</td>
+<td>-0.18</td>
+<td>-0.05</td>
+<td>-0.05</td>
+<td>0.01</td>
+<td>0.04</td>
+<td>0.62</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1883</td>
+<td>-0.18</td>
+<td>-0.30</td>
+<td>-0.07</td>
+<td>-0.37</td>
+<td>-0.17</td>
+<td>-0.01</td>
+<td>-0.19</td>
+<td>-0.57</td>
+<td>-0.29</td>
+<td>-0.18</td>
+<td>-0.16</td>
+<td>-0.04</td>
+<td>0.07</td>
+<td>0.49</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1884</td>
+<td>-0.29</td>
+<td>-0.44</td>
+<td>-0.15</td>
+<td>-0.62</td>
+<td>-0.15</td>
+<td>-0.14</td>
+<td>-1.31</td>
+<td>-0.65</td>
+<td>-0.49</td>
+<td>-0.12</td>
+<td>-0.17</td>
+<td>-0.19</td>
+<td>-0.02</td>
+<td>0.64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">138</td>
+<td>2018</td>
+<td>0.85</td>
+<td>1.03</td>
+<td>0.67</td>
+<td>1.24</td>
+<td>0.68</td>
+<td>0.69</td>
+<td>2.13</td>
+<td>1.09</td>
+<td>1.05</td>
+<td>0.73</td>
+<td>0.63</td>
+<td>0.80</td>
+<td>0.37</td>
+<td>0.97</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">139</td>
+<td>2019</td>
+<td>0.98</td>
+<td>1.21</td>
+<td>0.75</td>
+<td>1.42</td>
+<td>0.90</td>
+<td>0.65</td>
+<td>2.70</td>
+<td>1.43</td>
+<td>0.99</td>
+<td>0.91</td>
+<td>0.89</td>
+<td>0.75</td>
+<td>0.39</td>
+<td>0.86</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">140</td>
+<td>2020</td>
+<td>1.02</td>
+<td>1.35</td>
+<td>0.69</td>
+<td>1.67</td>
+<td>0.86</td>
+<td>0.58</td>
+<td>2.90</td>
+<td>1.82</td>
+<td>1.19</td>
+<td>0.89</td>
+<td>0.84</td>
+<td>0.59</td>
+<td>0.39</td>
+<td>0.92</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">141</td>
+<td>2021</td>
+<td>0.85</td>
+<td>1.14</td>
+<td>0.56</td>
+<td>1.42</td>
+<td>0.66</td>
+<td>0.53</td>
+<td>2.04</td>
+<td>1.36</td>
+<td>1.26</td>
+<td>0.73</td>
+<td>0.59</td>
+<td>0.73</td>
+<td>0.32</td>
+<td>0.31</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">142</td>
+<td>2022</td>
+<td>0.90</td>
+<td>1.16</td>
+<td>0.63</td>
+<td>1.52</td>
+<td>0.57</td>
+<td>0.71</td>
+<td>2.33</td>
+<td>1.51</td>
+<td>1.27</td>
+<td>0.63</td>
+<td>0.51</td>
+<td>0.79</td>
+<td>0.39</td>
+<td>1.12</td>
+</tr>
+</tbody>
+</table>
+
+<p>143 rows × 15 columns</p>
+</div>
+</div>
+</div>
+<div id="load-zonann-description" class="cell" data-message="false" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>|  variable  |  class  |     description     |
+|:----------:|:-------:|:-------------------:|
+|    Year    | double  |        Year         |
+|    Glob    | double  |       Global        |
+|    NHem    | double  | Northern Hemisphere |
+|    SHem    | double  | Southern Hemisphere |
+|  24N-90N   | double  |  24N-90N lattitude  |
+|  24S-24N   | double  |  24S-24N lattitude  |
+|  90S-24S   | double  |  90S-24S lattitude  |
+|  64N-90N   | double  |  64N-90N lattitude  |
+|  44N-64N   | double  |  44N-64N lattitude  |
+|  24N-44N   | double  |  24N-44N lattitude  |
+|  EQU-24N   | double  |  EQU-24N lattitude  |
+|  24S-EQU   | double  |  24S-EQU lattitude  |
+|  44S-24S   | double  |  44S-24S lattitude  |
+|  64S-44S   | double  |  64S-44S lattitude  |
+|  90S-64S   | double  |  90S-64S lattitude  |</code></pre>
+</div>
+</div>
 <hr>
+</section>
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
 <ol type="1">
