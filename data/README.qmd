@@ -1,4 +1,4 @@
-# Dataset Description
+Dataset Description
 
 This repository contains datasets about temperature changes across different geographical zones of the Earth, sourced from the TidyTuesday project. The temperature datasets were featured in the week of July 11, 2023, available on their GitHub repository [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-07-11).
 
@@ -19,23 +19,7 @@ import pandas as pd
 from tabulate import tabulate
 ```
 
-```{python}
-#| label: load-dataset
-#| message: false
-#| echo: false
 
-# Read in manually
-global_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/global_temps.csv')
-nh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/nh_temps.csv')
-sh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/sh_temps.csv')
-zonann_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv')
-
-```{python}
-#| label: load-global
-#| message: false
-#| echo: false
-
-global_temps
 
 
 ```{python}
@@ -144,24 +128,3 @@ For all datasets, the following variables are commonly found:
 
 
 Please refer to the specific dataset files for more detailed analysis and exploration of the temperature data. Each file is provided in CSV format for easy use with a variety of data analysis tools and software.
-
-
-```{python}
-#| label: load-dataset
-#| message: false
-#| echo: false
-
-# Read in manually
-global_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/global_temps.csv')
-nh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/nh_temps.csv')
-sh_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/sh_temps.csv')
-zonann_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv')
-
-global_temps_description = pd.read_csv("global_temps_description.csv")
-nh_temps_description = pd.read_csv("nh_temps_description.csv")
-sh_temps_description = pd.read_csv("sh_temps_description.csv")
-zonann_temps_description = pd.read_csv("zonann_temps_description.csv")
-```
-
-
-
