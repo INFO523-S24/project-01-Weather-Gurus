@@ -1,0 +1,27 @@
+``` {python}
+
+import pandas as pd 
+import numpy as np  
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+``` {pyplot}
+NH = pd.read_csv('./data/nh_temps.csv')
+SH = pd.read_csv('./data/sh_temps.csv')
+SH = SH.set_index('Year')
+NH = NH.set_index('Year')
+```
+
+```{python}
+
+new_seasopns = pd.concat([SH['DJF','Year'],SH['MAM','Year'],SH['JJA'],SH['SON']],axis=0)
+
+
+fig,ax = plt.subplots(ncols = 2, nrows=2)
+sns.lineplot(SH['DJF'],ax=ax[0,0])
+sns.lineplot(SH['MAM'],ax=ax[0,1])
+sns.lineplot(SH['JJA'],ax=ax[1,0])
+sns.lineplot(SH['SON'],ax=ax[1,1])
+
+```
