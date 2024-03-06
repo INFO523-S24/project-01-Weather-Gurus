@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np  
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 ```
 
 ``` {pyplot}
@@ -15,13 +16,39 @@ NH = NH.set_index('Year')
 
 ```{python}
 
-new_seasopns = pd.concat([SH['DJF','Year'],SH['MAM','Year'],SH['JJA'],SH['SON']],axis=0)
+new_seasopns = pd.concat([SH['DJF'],SH['MAM'],SH['JJA'],SH['SON']],axis=0)
+
+df_long = NH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
+
+# Convert 'Year' into a string so we can concatenate it with 'Season' for a unique x-axis label
+df_long['Year'] = df_long['Year'].astype(str)
+df_long['Time'] = df_long['Year'] + " " + df_long['Season']
 
 
-fig,ax = plt.subplots(ncols = 2, nrows=2)
-sns.lineplot(SH['DJF'],ax=ax[0,0])
-sns.lineplot(SH['MAM'],ax=ax[0,1])
-sns.lineplot(SH['JJA'],ax=ax[1,0])
-sns.lineplot(SH['SON'],ax=ax[1,1])
+figg, ax = plt.subplots(nrows = 1, ncols = 1, figsize = (20, 8))
+plot = sns.lineplot(data=df_long, x='Time', y='Temperature', hue='Season', marker='o', ax = ax)
+# Improve the readability of the x-axis labels
+# Setting the title and labels for the plot
+ax.set_title('Seasonal Temperature Variations')
+ax.set_xlabel('Year / Season')
+ax.set_ylabel('Temperature Variation (°C)')
+plot.xaxis.set_major_locator(MaxNLocator(nbins=20)) 
+# Add a legend to distinguish the seasons
+ax.legend(title='Season')
+figg.tight_layout()
+figg.show()
+
+
+
+
+
+heatmap_data = df_long.pivot(index="Year", columns="Season", values="Temperature")
+
+# Now, create the heatmap with corrected data preparation
+fig, axx = plt.subplots(nrows = 1, ncols = 1, figsize = (8, 13))
+qq = sns.heatmap(heatmap_data, ax = axx, fmt = ".2f", cmap="coolwarm", linewidths=.5, cbar_kws={'label': 'Temperature Variation (°C)'})
+# Setting the title
+axx.set_title('Seasonal Temperature Variations')
+fig.show()
 
 ```
