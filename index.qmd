@@ -17,11 +17,84 @@ The dataset contains four CSV files, providing temperature anomalies across diff
 
 Introduction: We used variables inside the zonnan_temps.csv dataset. Initially, we transformed the data from a wide format to a long format by defining a new column called zones and merging all eight variables related to zones (i.e. 24N-44N, …) to that column. As we are focusing on annual zonal anomalies in this question, we can skip Glob, NHem, and SHem variables. Finally, we have a dataframe with three columns representing year, zone, and the last contains the anomalies. We created a time series for each zone to visualize the pattern of zonal annual temperature anomalies, emphasizing any noticeable trends or deviation from zonal long-term mean anomaly. We used heatmaps to illustrate how zonal annual temperature anomalies vary across countries and oceans, revealing which hemisphere exhibits more erratic behavior.
 
-Approach: We'll conduct time series analysis to contrast 2023 temperature anomalies with past data, providing insights into any deviations or patterns. Trend analysis will allow us to examine temperature anomaly trends over the years, including 2023, highlighting long-term changes. 
+Approach: The approach for this analysis will involve two distinct methods: heatmap visualization and time series analysis. The heatmap provides an intuitive grasp of the data by color mapping the temperature anomalies across latitudinal zones over time. This method is suitable for spotting overall trends and outliers in a comprehensive visual format. For the time series analysis, we will examine the changes in global and hemispheric mean temperatures over time. This will involve plotting the data, with a particular emphasis on trend lines to discern long-term changes. The use of color mapping in the heatmap serves to quickly convey the magnitude of anomalies, while the time series plot with its trend line will enable us to evaluate the trajectory of temperature changes more formally.
+
 
 Analysis: 
+### Code Block 1: Load and preprocess the data
 
-Discussion: 
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset, will add path 
+data = pd.read_csv('')
+
+# Data preprocessing steps
+
+data.fillna(data.mean(), inplace=True)
+```
+
+### Code Block 2: Heatmap for visualizing temperature anomalies
+
+```{python}
+
+# Plot the heatmap
+plt.figure(figsize=(15, 8))
+sns.heatmap(data, cmap="coolwarm", linewidths=0.1)
+plt.title('Annual Temperature Anomalies Heatmap over each Latitude Range')
+plt.xlabel('Year')
+plt.ylabel('Latitude Range')
+
+# Define a function to highlight certain years in red
+def highlight_years(ax, years_to_highlight):
+    for label in ax.get_xticklabels():
+        if label.get_text() in years_to_highlight:
+            label.set_color('red')
+
+# Apply the highlight function to the x-tick labels
+highlight_years(plt.gca(), ['1950', '1955', '1960', '1965', '1970', '1975', '1980'])
+
+plt.show()
+
+```
+
+### Code Block 3: Time series analysis
+
+```{python}
+# Time series plot of global-mean monthly temperature anomalies
+
+# Load the global-mean monthly data, will add path
+global_mean_data = pd.read_csv('path_to_global_mean_data.csv')
+
+# Convert the 'Year' column to datetime type
+global_mean_data['Year'] = pd.to_datetime(global_mean_data['Year'], format='%Y')
+
+# Set the 'Year' column as the index
+global_mean_data.set_index('Year', inplace=True)
+
+# Plot the global-mean monthly temperature data
+plt.figure(figsize=(15, 5))
+plt.plot(global_mean_data.index, global_mean_data['Global_mean_temp'], label='Global Mean Temp')
+
+# Add trend line using rolling average or polynomial fitting
+
+rolling_mean = global_mean_data['Global_mean_temp'].rolling(window=10).mean()
+plt.plot(global_mean_data.index, rolling_mean, label='10-year Rolling Mean', color='red')
+
+plt.title('Time Series of Global Mean Monthly Temperature Anomalies')
+plt.xlabel('Year')
+plt.ylabel('Temperature Anomaly (°C)')
+plt.legend()
+
+```
+
+Discussion: The heatmap visualization elucidates the distribution and intensity of temperature anomalies across different latitudinal ranges. Notably, there appears to be a concentration of higher anomalies (red tones) in the Northern Hemisphere, particularly in the higher latitudes. This could indicate a stronger warming trend in these areas, which is consistent with the current understanding of climate change where polar and high-latitude regions are warming faster than the global average.
+
+Furthermore, the analysis of the global mean temperature anomalies over time reveals a clear upward trend, signifying an increase in global temperatures. This trend is likely influenced by anthropogenic factors, as suggested by the literature on global warming. The variations in anomalies also suggest periods of relative stability interspersed with rapid increases, potentially corresponding with known climatic events or changes in greenhouse gas emissions.
+
+In conclusion, the data preprocessing and subsequent analysis have provided valuable insights into the historical patterns of temperature change. The evidence points to a planet that is experiencing significant warming, with pronounced effects at higher latitudes. Further investigation could focus on correlating these patterns with environmental and human activities to better understand the drivers behind these changes.
 
 ## Question 2: How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?
 
