@@ -54,15 +54,30 @@ figg.tight_layout()
 plt.show()
 
 
+figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
+plot = sns.boxplot(data=df_full, x='Temperature', y='Season', hue='Hemisphere', ax=ax)
 
 
-heatmap_data = df_long.pivot(index="Year", columns="Season", values="Temperature")
+# Setting the title and labels for the plot
+ax.set_title('Temperature Variations in the Northern and Southern Hemispheres')
+ax.set_xlabel('Temperature Variation (°C)')
+ax.set_ylabel('Season')
 
-# Now, create the heatmap with corrected data preparation
-fig, axx = plt.subplots(nrows = 1, ncols = 1, figsize = (8, 13))
-qq = sns.heatmap(heatmap_data, ax = axx, fmt = ".2f", cmap="coolwarm", linewidths=.5, cbar_kws={'label': 'Temperature Variation (°C)'})
-# Setting the title
-axx.set_title('Seasonal Temperature Variations')
-fig.show()
+# Add a legend to distinguish the seasons and hemispheres
+ax.legend(title='Legend')
+
+# Optimize layout and show the plot
+figg.tight_layout()
+plt.show()
+ax.legend(title='Legend')
+
+# Optimize layout and show the plot
+figg.tight_layout()
+plt.show()
+
+
+
+
+
 
 ```
