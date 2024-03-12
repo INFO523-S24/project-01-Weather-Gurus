@@ -31,5 +31,52 @@ Approach: We'll perform comparative analysis by comparing 2023 average temperatu
 
 Analysis: 
 
+```{python}
+import pandas as pd 
+import numpy as np  
+import seaborn as sns
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
+NH = pd.read_csv('./data/nh_temps.csv')
+SH = pd.read_csv('./data/sh_temps.csv')
+
+
+df_long = NH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
+
+
+
+df_long_SH = SH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
+
+df_long['Hemisphere'] = 'NH'
+df_long_SH['Hemisphere'] = 'SH'
+df_full = pd.concat([df_long, df_long_SH], ignore_index=True)
+# Convert 'Year' into a string so we can concatenate it with 'Season' for a unique x-axis label
+
+df_full['Year'] = df_full['Year'].astype(str)
+df_full['Time'] = df_full['Year'] + " " + df_full['Season']
+df_full['Hue'] = df_full['Hemisphere'] + ' - ' + df_full['Season']
+
+
+figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
+plot = sns.lineplot(data=df_full, x='Time', y='Temperature', hue='Hue', marker='o', ax=ax)
+
+# Improve the readability of the x-axis labels
+plot.xaxis.set_major_locator(MaxNLocator(nbins=20)) 
+
+# Setting the title and labels for the plot
+ax.set_title('Seasonal Temperature Variations in the Northern and Southern Hemispheres')
+ax.set_xlabel('Time')
+ax.set_ylabel('Temperature Variation (°C)')
+
+# Add a legend to distinguish the seasons and hemispheres
+ax.legend(title='Legend')
+
+# Optimize layout and show the plot
+figg.tight_layout()
+plt.show()
+
+
+```
+
 Discussion: 
 
