@@ -1,0 +1,11 @@
+{
+  "hash": "f20b81bef7d824f9753cc8c7acc4b4bd",
+  "result": {
+    "markdown": "---\ntitle: Project title\nsubtitle: INFO 523 - Project 1\nauthor: Team name\nformat: html\neditor: visual\n---\n\n## Abstract\n\nAdd project abstract here.\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
