@@ -1,8 +1,8 @@
 {
-  "hash": "33d91f04f2993c39f8243e26b7238a4b",
+  "hash": "ced79e1cc584ddf55875f33c71887f6b",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: Global Temperature Analysis\nformat: html\neditor: visual\n---\n\nThis project was developed by **Weather Gurus** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\n-   Mohammad Farmani: second year PhD student in Hydrology and Atmospheric Sciences(HAS).\n\n-   Deema Albluwi: second year PhD student in Computational Linguistics.\n-   Remi Hendershott: first year master's student in Information Science, with focus on HCI, seeking a career in UX/UI design. \n\n-   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\n\n-   Priom Mahmud: second year PhD student in Systems and Industrial Engineering.\n\n",
+    "markdown": "---\ntitle: Global Temperature Analysis\nformat: html\neditor: visual\n---\n\nThis project was developed by **Weather Gurus** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members:\n\n-   Mohammad Farmani: second year PhD student in Hydrology and Atmospheric Sciences(HAS).\n\n-   Deema Albluwi: second year PhD student in Computational Linguistics.\n\n-   Remi Hendershott: first year master's student in Information Science, with focus on HCI, seeking a career in UX/UI design. \n\n-   Omid Zandi:\n\n-   Priom Mahmud: second year PhD student in Systems and Industrial Engineering.\n\n-   Praveen Kumar Pappala:\n\n",
     "supporting": [
       "about_files/figure-html"
     ],
