@@ -44,7 +44,6 @@ SH = pd.read_csv('./data/sh_temps.csv')
 df_long = NH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
 
 
-
 df_long_SH = SH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
 
 df_long['Hemisphere'] = 'NH'
