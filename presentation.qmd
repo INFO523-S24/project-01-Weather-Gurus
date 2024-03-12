@@ -1,7 +1,7 @@
 ---
-title: "Project title"
+title: "Weather Gurus - Global Temperature Analysis"
 subtitle: "INFO 523 - Spring 2023 - Project 1"
-author: "Author names"
+author: "Omid Zandi, Mohammad Farmani, Priom Mahmud, Praveen Kumar Pappala, Deema Albluwi, and Remi Hendershott"
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
   data-background-size: stretch
@@ -51,117 +51,20 @@ mtcars['speed'] = mtcars['horsepower'] / mtcars['weight']
 penguins = sns.load_dataset('penguins').dropna()
 ```
 
-# Using Quarto for presentations
 
-## Quarto
+## Introduction
 
--   The presentation is created using the Quarto CLI
+-   The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We'll analyze yearly temperature anomalies using the J-D column from global_temps.csv, nh_temps.csv, and sh_temps.csv datasets to assess global and hemispheric trends. 
 
--   `##` sets the start of a new slide
+-   Additionally, we'll focus on seasonal anomalies, examining DJF and JJA for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. To enrich our analysis, we'll integrate 2023 temperature anomaly data from NASA's GISS Surface Temperature Analysis, calculating both yearly and seasonal anomalies for that year.
 
-## Layouts
+## Question 1
 
-You can use plain text
 
-::: columns
-::: {.column width="40%"}
--   or bullet points[^1]
-:::
 
-::: {.column width="60%"}
-or in two columns
-:::
-:::
+## Code & Visualizations 
 
-[^1]: And add footnotes
 
--   like
+## Question 2
 
--   this
-
-## Code
-
-```{python}
-from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
-import pandas as pd
-
-# Fit a linear regression model
-X = mtcars[['speed']]
-y = mtcars['mpg']
-model = LinearRegression().fit(X, y)
-
-# Summary of the model
-X2 = sm.add_constant(X)
-est = sm.OLS(y, X2)
-est2 = est.fit()
-print(est2.summary())
-```
-
-## Plots
-
-```{python}
-penguins['species'] = penguins['species'].apply(lambda x: "Adelie" if x == "Adelie" else "Other")
-sns.scatterplot(data=penguins, x='flipper_length_mm', y='body_mass_g', hue='species')
-plt.show()
-```
-
-## Plot and text
-
-::: columns
-::: {.column width="50%"}
--   Some text
-
--   goes here
-:::
-
-::: {.column width="50%"}
-```{python}
-#| warning: false
-#| fig.width: 5.5
-fig, ax = plt.subplots(figsize=(5.5, 5.5 * 0.618))
-sns.boxplot(data=penguins, x='bill_length_mm', y='species', hue='species', ax=ax)
-plt.show()
-```
-:::
-:::
-
-# A new section...
-
-## Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{python}
-penguins.head().to_html()
-```
-
-## Images
-
-![Image credit: Danielle Navarro, Percolate.](images/watercolour_sys02_img34_teacup-ocean.png){fig-align="center" width="500"}
-
-## Math Expressions {.smaller}
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. \$\\alpha+\\beta\$ renders $\alpha + \beta$. You can use the display style with double dollar signs:
-
-```         
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-$$
-
-Limitations:
-
-1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-2.  There should not be spaces after the opening `$` or before the closing `$`.
-
-# Wrap up
-
-## Feeling adventurous?
-
--   You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
--   But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.
+## Code & Visualization 
