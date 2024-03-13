@@ -39,7 +39,7 @@ data = pd.melt(zonann_temps, id_vars = ['Year', 'Glob'],
 
 
 # Pivot the data for heatmap plotting, with Year on the x-axis and latitude ranges on the y-axis
-heatmap_data_swapped_axes = data.pivot("lat_range", "Year", "temp_dev")
+heatmap_data_swapped_axes = data.pivot_table(index = "lat_range",columns= "Year",values = "temp_dev")
 
 ```
 
