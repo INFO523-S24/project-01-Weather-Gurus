@@ -1,5 +1,5 @@
 ---
-title: "Weather Gurus - Global Temperature Analysis"
+title: "Weather Gurus - Analysis on Global Temperature Anomalies"
 subtitle: "INFO 523 - Spring 2023 - Project 1"
 author: "Omid Zandi, Mohammad Farmani, Priom Mahmud, Praveen Kumar Pappala, Deema Albluwi, and Remi Hendershott"
 title-slide-attributes:
@@ -54,15 +54,16 @@ penguins = sns.load_dataset('penguins').dropna()
 
 ## Introduction
 
--   The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We'll analyze yearly temperature anomalies using the J-D column from global_temps.csv, nh_temps.csv, and sh_temps.csv datasets to assess global and hemispheric trends. 
+-   The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We'll analyze yearly temperature anomalies from global_temps.csv, nh_temps.csv, and sh_temps.csv datasets to assess global and hemispheric trends. 
 
--   Additionally, we'll focus on seasonal anomalies, examining DJF and JJA for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. To enrich our analysis, we'll integrate 2023 temperature anomaly data from NASA's GISS Surface Temperature Analysis, calculating both yearly and seasonal anomalies for that year.
+-   Additionally, we'll focus on seasonal anomalies, examining for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. To enrich our analysis, we'll integrate 2023 temperature anomaly data from NASA's GISS Surface Temperature Analysis, calculating both yearly and seasonal anomalies for that year.
 
-## Question 1: How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?
-- The approach for this analysis will involve two distinct methods: heatmap visualization and time series analysis. The heatmap provides an intuitive grasp of the data by color mapping the temperature anomalies across latitudinal zones over time. This method is suitable for spotting overall trends and outliers in a comprehensive visual format. 
-- For the time series analysis, we will examine the changes in global and hemispheric mean temperatures over time. This will involve plotting the data, with a particular emphasis on trend lines to discern long-term changes. The use of color mapping in the heatmap serves to quickly convey the magnitude of anomalies, while the time series plot with its trend line will enable us to evaluate the trajectory of temperature changes more formally.
+## Question 1:  Analysis on Zonal Temperature Anomalies
 
-## Load and preprocess data
+- We analysed the temperature anomalies across the latitudinal zones of earth. The approach involved two distinct methods: 
+
+-   1. Heatmap Visualizaton
+-   2. Ridge Plot Visualization
 
 ```{python}
 import pandas as pd
@@ -141,10 +142,12 @@ plt.xlim(-3, 3)
 plt.show()
 ```
 
-## Question 2: How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?
-- We compared the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. We can used time series and box plots to illustrate and compare the time series and statistical distribution of seasonal temperature anomalies in the northern and southern hemispheres to discuss how different and similar they are. 
-- The goal is to not only capture how seasonal temperatures have strayed from some long-term average, but how temperatures are fluctuating relative to even temporally local averages. 
+## Question 2: Analysis on Seasonal Temperature Anomalies
 
+- We compared the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. For this, we used:
+
+-   1. Time Series Analysis
+-   2. Box Plot Visualization
 
 ```{python}
 import pandas as pd 
@@ -162,7 +165,7 @@ SH = pd.read_csv('./data/sh_temps.csv')
 # NH = NH.set_index('Year')
 ```
 
-## Plots
+## Time Series Analysis - Line plot
 ```{python}
 SH = SH.rename(columns={'DJF': "JJA", 'MAM': 'SON', 'JJA': "DJF", 'SON':'MAM' })
 
@@ -209,8 +212,12 @@ for u, i in enumerate(season):
         if index % nth_label != 0:
             label.set_visible(False)
 
+plt.show()
+```
 
 
+## Boxplot
+```{python}
 figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
 plot = sns.boxplot(data=df_full, y='Temperature', x='Season', hue='Hemisphere', ax=ax)
 
@@ -233,3 +240,13 @@ ax.legend(title='Legend', fontsize=15)
 figg.tight_layout()
 plt.show()
 ```
+
+## Conclusion
+
+- In conclusion, the proposed analysis of global surface temperature anomalies offers valuable insights into understanding climate change trends and their impacts on various regions. 
+
+- Through visualizations and analysis, the project seeks to inform strategic planning and adaptation measures to mitigate the adverse effects of climate change on human livelihoods and ecosystems. 
+
+- This endeavour underscores the importance of interdisciplinary collaboration and data-driven approaches in addressing the challenges posed by climate change for a sustainable future.
+
+## Thank You!
