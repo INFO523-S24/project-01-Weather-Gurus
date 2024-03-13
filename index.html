@@ -8,7 +8,7 @@
 
 <meta name="author" content="Omid Zandi, Mohammad Farmani, Priom Mahmud, Praveen Kumar Pappala, Deema Albluwi, and Remi Hendershott">
 
-<title>Project Title - Weather Gurus</title>
+<title>Project Title - Weather Gurus - Global Temperature Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -128,7 +162,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record" id="toc-question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record" class="nav-link" data-scroll-target="#question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record">Question 1: How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?</a></li>
+  <li><a href="#question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record" id="toc-question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record" class="nav-link" data-scroll-target="#question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record">Question 1: How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?</a>
+  <ul class="collapse">
+  <li><a href="#code-block-1-load-and-preprocess-the-data" id="toc-code-block-1-load-and-preprocess-the-data" class="nav-link" data-scroll-target="#code-block-1-load-and-preprocess-the-data">Code Block 1: Load and preprocess the data</a></li>
+  <li><a href="#code-block-2-heatmap-for-visualizing-temperature-anomalies" id="toc-code-block-2-heatmap-for-visualizing-temperature-anomalies" class="nav-link" data-scroll-target="#code-block-2-heatmap-for-visualizing-temperature-anomalies">Code Block 2: Heatmap for visualizing temperature anomalies</a></li>
+  <li><a href="#code-block-3-ridgeplots-of-zonnal-temperature-annomalies" id="toc-code-block-3-ridgeplots-of-zonnal-temperature-annomalies" class="nav-link" data-scroll-target="#code-block-3-ridgeplots-of-zonnal-temperature-annomalies">Code Block 3: Ridgeplots of zonnal temperature annomalies</a></li>
+  </ul></li>
   <li><a href="#question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior" id="toc-question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior" class="nav-link" data-scroll-target="#question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior">Question 2: How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?</a></li>
   </ul>
 </nav>
@@ -138,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Weather Gurus</h1>
+<h1 class="title">Weather Gurus - Global Temperature Analysis</h1>
 <p class="subtitle lead">INFO 523 - Project 1</p>
 </div>
 
@@ -169,17 +208,215 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record">Question 1: How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?</h2>
-<p>Introduction: We used variables inside the zonnan_temps.csv dataset. Initially, we transformed the data from a wide format to a long format by defining a new column called zones and merging all eight variables related to zones (i.e.&nbsp;24N-44N, …) to that column. As we are focusing on annual zonal anomalies in this question, we can skip Glob, NHem, and SHem variables. Finally, we have a dataframe with three columns representing year, zone, and the last contains the anomalies. We created a time series for each zone to visualize the pattern of zonal annual temperature anomalies, emphasizing any noticeable trends or deviation from zonal long-term mean anomaly. We used heatmaps to illustrate how zonal annual temperature anomalies vary across countries and oceans, revealing which hemisphere exhibits more erratic behavior.</p>
-<p>Approach: We’ll conduct time series analysis to contrast 2023 temperature anomalies with past data, providing insights into any deviations or patterns. Trend analysis will allow us to examine temperature anomaly trends over the years, including 2023, highlighting long-term changes.</p>
-<p>Analysis:</p>
-<p>Discussion:</p>
+<p>Introduction: Introduction: We used variables inside the zonnan_temps.csv dataset. Initially, we transformed the data from a wide format to a long format by defining a new column called zones and merging all eight variables related to zones (i.e.&nbsp;24N-44N, …) to that column. As we are focusing on annual zonal anomalies in this question, we can skip Glob, NHem, and SHem variables. Finally, we have a dataframe with three columns representing year, zone, and the last contains the anomalies. We created a time series for each zone to visualize the pattern of zonal annual temperature anomalies, emphasizing any noticeable trends or deviation from zonal long-term mean anomaly. We used heatmaps to illustrate how zonal annual temperature anomalies vary across countries and oceans, revealing which hemisphere exhibits more erratic behavior.</p>
+<p>Approach: The approach for this analysis will involve two distinct methods: heatmap visualization and time series analysis. The heatmap provides an intuitive grasp of the data by color mapping the temperature anomalies across latitudinal zones over time. This method is suitable for spotting overall trends and outliers in a comprehensive visual format. For the time series analysis, we will examine the changes in global and hemispheric mean temperatures over time. This will involve plotting the data, with a particular emphasis on trend lines to discern long-term changes. The use of color mapping in the heatmap serves to quickly convey the magnitude of anomalies, while the time series plot with its trend line will enable us to evaluate the trajectory of temperature changes more formally.</p>
+<section id="code-block-1-load-and-preprocess-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="code-block-1-load-and-preprocess-the-data">Code Block 1: Load and preprocess the data</h3>
+<div id="93212ed3" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> joypy</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> cm</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>zonann_temps <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the DataFrame from wide to long format</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.melt(zonann_temps, id_vars <span class="op">=</span> [<span class="st">'Year'</span>, <span class="st">'Glob'</span>], </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                       value_vars <span class="op">=</span> [<span class="st">'EQU-24N'</span>, <span class="st">'24N-44N'</span>, <span class="st">'44N-64N'</span>, <span class="st">'64N-90N'</span>, <span class="st">'24S-EQU'</span>, <span class="st">'44S-24S'</span>, <span class="st">'64S-44S'</span>, <span class="st">'90S-64S'</span>],</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                       var_name <span class="op">=</span> <span class="st">'lat_range'</span>, value_name <span class="op">=</span> <span class="st">'temp_dev'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot the data for heatmap plotting, with Year on the x-axis and latitude ranges on the y-axis</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>heatmap_data_swapped_axes <span class="op">=</span> data.pivot_table(index <span class="op">=</span> <span class="st">"lat_range"</span>,columns<span class="op">=</span> <span class="st">"Year"</span>,values <span class="op">=</span> <span class="st">"temp_dev"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="code-block-2-heatmap-for-visualizing-temperature-anomalies" class="level3">
+<h3 class="anchored" data-anchor-id="code-block-2-heatmap-for-visualizing-temperature-anomalies">Code Block 2: Heatmap for visualizing temperature anomalies</h3>
+<div id="cell-Heatmap" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the specified order for latitude ranges</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>lat_range_order <span class="op">=</span> [<span class="st">'64N-90N'</span>, <span class="st">'44N-64N'</span>, <span class="st">'24N-44N'</span>, <span class="st">'EQU-24N'</span>, <span class="st">'24S-EQU'</span>, <span class="st">'44S-24S'</span>, <span class="st">'64S-44S'</span>, <span class="st">'90S-64S'</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder the dataframe according to the specified latitude range order</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>heatmap_data_ordered <span class="op">=</span> heatmap_data_swapped_axes.reindex(lat_range_order)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the heatmap</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>sns.heatmap(heatmap_data_ordered, cmap <span class="op">=</span> <span class="st">"coolwarm"</span>, linewidths <span class="op">=</span> <span class="fl">0.1</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Annual Temperature Annomalies Heatmap over each Latitude Range </span><span class="ch">\n</span><span class="st">Years Colored in Red on the x Axis Show Reference Years'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Latitude Range'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set x-tick labels to appear every five years and color reference years in red</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> heatmap_data_ordered.columns.values</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ticks <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(years), <span class="dv">5</span>)  <span class="co"># Show a tick every 5 years</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.xticks(ticks, [years[i] <span class="cf">for</span> i <span class="kw">in</span> ticks], rotation <span class="op">=</span> <span class="dv">45</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>highlight_years <span class="op">=</span> [<span class="st">'1950'</span>, <span class="st">'1955'</span>, <span class="st">'1960'</span>, <span class="st">'1965'</span>, <span class="st">'1970'</span>, <span class="st">'1975'</span>, <span class="st">'1980'</span>]</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label <span class="kw">in</span> plt.gca().get_xticklabels():</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> label.get_text() <span class="kw">in</span> highlight_years:</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        label.set_color(<span class="st">'red'</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/heatmap-output-1.png" id="heatmap" width="877" height="709" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="code-block-3-ridgeplots-of-zonnal-temperature-annomalies" class="level3">
+<h3 class="anchored" data-anchor-id="code-block-3-ridgeplots-of-zonnal-temperature-annomalies">Code Block 3: Ridgeplots of zonnal temperature annomalies</h3>
+<div id="cell-Ridgeplots" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the desired order for the latitude ranges</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lat_order <span class="op">=</span> [<span class="st">'64N-90N'</span>, <span class="st">'44N-64N'</span>, <span class="st">'24N-44N'</span>, <span class="st">'EQU-24N'</span>, <span class="st">'24S-EQU'</span>, <span class="st">'44S-24S'</span>, <span class="st">'64S-44S'</span>, <span class="st">'90S-64S'</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure that the 'lat_range' column is of categorical type and set the categories and their order</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'lat_range'</span>] <span class="op">=</span> pd.Categorical(data[<span class="st">'lat_range'</span>], categories<span class="op">=</span>lat_order, ordered<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the ridgeline plot with the specified order</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> joypy.joyplot(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>data, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    by<span class="op">=</span><span class="st">'lat_range'</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    column<span class="op">=</span><span class="st">'temp_dev'</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    colormap<span class="op">=</span>cm.viridis, </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.6</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Ridgeline Plot of Temperature Deviations by Latitude Range'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, pad<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Temperature Annomaly'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/mohammad/anaconda3/envs/Pytorch/lib/python3.11/site-packages/joypy/joyplot.py:176: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  grouped = data.groupby(by)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/ridgeplots-output-2.png" id="ridgeplots" width="1147" height="795" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Discussion: The heatmap visualizes temperature anomalies by latitude from 1880 to around 2020, with a clear shift from cool (blue) to warm (red) over time, indicating a long-term global warming trend. Latitudinal bands closer to the Arctic (64°N to 90°N) show more pronounced warming, a phenomenon known as polar amplification. Recent years across all latitudes are predominantly red, suggesting higher-than-average temperatures becoming the new normal. The reference years marked in red may denote the baseline for calculating anomalies, implying an increasing baseline temperature. Overall, the data illustrates the global extent of climate change, with the most significant changes occurring at the poles.</p>
+<p>The heatmap visualization elucidates the distribution and intensity of temperature anomalies across different latitudinal ranges. Notably, there appears to be a concentration of higher anomalies (red tones) in the Northern Hemisphere, particularly in the higher latitudes. This could indicate a stronger warming trend in these areas, which is consistent with the current understanding of climate change where polar and high-latitude regions are warming faster than the global average.</p>
+<p>Furthermore, the analysis of the global mean temperature anomalies over time reveals a clear upward trend, signifying an increase in global temperatures. This trend is likely influenced by anthropogenic factors, as suggested by the literature on global warming. The variations in anomalies also suggest periods of relative stability interspersed with rapid increases, potentially corresponding with known climatic events or changes in greenhouse gas emissions.</p>
+<p>In conclusion, the data preprocessing and subsequent analysis have provided valuable insights into the historical patterns of temperature change. The evidence points to a planet that is experiencing significant warming, with pronounced effects at higher latitudes. Further investigation could focus on correlating these patterns with environmental and human activities to better understand the drivers behind these changes.</p>
+</section>
 </section>
 <section id="question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior">Question 2: How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?</h2>
 <p>Introduction: We will use nh_temps.csv and sh_temps.csv datasets. We should start by converting the dataset of each hemisphere to a long format by defining one new column for month (season) and one column that shows the hemispheres (NH and SH). Finally, we can merge the data frames vertically to arrive at a one comprehensive dataframe. We can compare the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. We can use time series, box plots, or histograms to illustrate and compare the time series and statistical distribution of seasonal temperature anomalies in the northern and southern hemispheres to discuss how different and similar they are. It may be interesting to create a similar visualization to the previous question with deviation from long-term anomalies. This would not only capture how seasonal temperatures have strayed from some long-term average, but how temperatures are fluctuating relative to even temporally local averages.</p>
 <p>Approach: We’ll perform comparative analysis by comparing 2023 average temperature anomalies with historical peaks, both globally and hemispherically, while also scrutinizing seasonal variations to deepen our understanding.</p>
 <p>Analysis:</p>
-<p>Discussion:</p>
+<div id="29194b67" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> MaxNLocator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b9d6f999" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>NH <span class="op">=</span> pd.read_csv(<span class="st">'./data/nh_temps.csv'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> pd.read_csv(<span class="st">'./data/sh_temps.csv'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SH = SH.set_index('Year')</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NH = NH.set_index('Year')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cd6398b8" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> SH.rename(columns<span class="op">=</span>{<span class="st">'DJF'</span>: <span class="st">"JJA"</span>, <span class="st">'MAM'</span>: <span class="st">'SON'</span>, <span class="st">'JJA'</span>: <span class="st">"DJF"</span>, <span class="st">'SON'</span>:<span class="st">'MAM'</span> })</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> NH.melt(id_vars<span class="op">=</span>[<span class="st">'Year'</span>], value_vars<span class="op">=</span>[<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>], var_name<span class="op">=</span><span class="st">'Season'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df_long_SH <span class="op">=</span> SH.melt(id_vars<span class="op">=</span>[<span class="st">'Year'</span>], value_vars<span class="op">=</span>[<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>], var_name<span class="op">=</span><span class="st">'Season'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>df_long[<span class="st">'Hemisphere'</span>] <span class="op">=</span> <span class="st">'NH'</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>df_long_SH[<span class="st">'Hemisphere'</span>] <span class="op">=</span> <span class="st">'SH'</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>df_full <span class="op">=</span> pd.concat([df_long, df_long_SH], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 'Year' into a string so we can concatenate it with 'Season' for a unique x-axis label</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Year'</span>] <span class="op">=</span> df_full[<span class="st">'Year'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Time'</span>] <span class="op">=</span> df_full[<span class="st">'Year'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> df_full[<span class="st">'Season'</span>]</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Hue'</span>] <span class="op">=</span> df_full[<span class="st">'Hemisphere'</span>] <span class="op">+</span> <span class="st">' - '</span> <span class="op">+</span> df_full[<span class="st">'Season'</span>]</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>nth_label <span class="op">=</span> <span class="dv">10</span> </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>season <span class="op">=</span> [<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>]</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>season_name <span class="op">=</span> [<span class="st">'Winter'</span>, <span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>]</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> u, i <span class="kw">in</span> <span class="bu">enumerate</span>(season):</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    sub_full <span class="op">=</span> df_full[df_full[<span class="st">'Season'</span>]<span class="op">==</span>i] </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    plot <span class="op">=</span> sns.lineplot(data<span class="op">=</span>sub_full, x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Temperature'</span>, hue<span class="op">=</span><span class="st">'Hue'</span>, marker<span class="op">=</span><span class="st">'o'</span>, ax<span class="op">=</span>ax.flatten()[u])</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].set_title(<span class="ss">f'Temperature Variations for </span><span class="sc">{</span>season_name[u]<span class="sc">}</span><span class="ss">'</span>, fontsize<span class="op">=</span><span class="dv">20</span>) <span class="co"># Adjust title font size as needed</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Increase font size for x label</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].set_ylabel(<span class="st">'Temperature Variation (°C)'</span>, fontsize<span class="op">=</span><span class="dv">13</span>) <span class="co"># Increase font size for y label</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> u <span class="op">&lt;=</span><span class="dv">1</span> :</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        ax.flatten()[u].set_xticks([])</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        ax.flatten()[u].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        ax.flatten()[u].set_xlabel(<span class="st">'Time'</span>, fontsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the x-tick labels to season names</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].legend(title<span class="op">=</span><span class="st">'Legend'</span>, fontsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index, label <span class="kw">in</span> <span class="bu">enumerate</span>(ax.flatten()[u].get_xticklabels()):</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> index <span class="op">%</span> nth_label <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>            label.set_visible(<span class="va">False</span>)</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.boxplot(data<span class="op">=</span>df_full, y<span class="op">=</span><span class="st">'Temperature'</span>, x<span class="op">=</span><span class="st">'Season'</span>, hue<span class="op">=</span><span class="st">'Hemisphere'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Temperature Variations in the Northern and Southern Hemispheres'</span>, fontsize<span class="op">=</span><span class="dv">20</span>) <span class="co"># Adjust title font size as needed</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Season'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for x label</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Temperature Variation (°C)'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for y label</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the x-tick labels to season names</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'Winter'</span>, <span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>])</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Increase font size of the tick labels</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend to distinguish the seasons and hemispheres, adjust font size as needed</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Legend'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize layout and show the plot</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>figg.tight_layout()</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/wr/323h4t5x63zbc0d1jr1l1nlm0000gn/T/ipykernel_81880/1810613142.py:57: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_xticklabels(['Winter', 'Spring', 'Summer', 'Fall'])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-2.png" width="1581" height="684" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-3.png" width="1911" height="761" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Discussion: Across all graphs, there’s a noticeable increase in temperature variation, particularly from around the 1970s onwards, reflecting a trend towards warming in both hemispheres. This warming trend appears more pronounced during the Winter and Spring seasons. The data indicates some volatility in temperature changes year on year, but the overall trajectory suggests a significant rise in global temperatures, consistent with patterns of climate change.</p>
+<p>The boxplot summarizes temperature variations across seasons in the Northern and Southern Hemispheres, revealing subtle yet insightful differences. In the Northern Hemisphere, a greater variability in winter temperatures is apparent, suggested by longer whiskers and more outliers, likely influenced by its extensive landmass. Spring shows a slightly higher median temperature variation in the Northern Hemisphere, indicative of consistently warmer springs than in the Southern Hemisphere. Interestingly, during summer, the two hemispheres display nearly identical temperature variations, suggesting a universal pattern of summer temperature changes. Come fall, the Southern Hemisphere exhibits a slightly wider range of temperature variations, which could point towards a more dynamic climatic response during this season.</p>
+<p>Overall, while median temperature variations are generally comparable between the hemispheres, the Northern Hemisphere tends to exhibit greater extremes, particularly in winter and spring, which can be attributed to its larger landmass and consequent continental climate influence.</p>
 
 
 </section>
