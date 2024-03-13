@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.540">
+<meta name="generator" content="quarto-1.4.537">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -164,92 +164,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="a2051719" class="cell" data-execution_count="1">
+<div id="a7488531" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> MaxNLocator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fe0471a2" class="cell" data-execution_count="2">
+<div id="f3cd6db7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>NH <span class="op">=</span> pd.read_csv(<span class="st">'./data/nh_temps.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> pd.read_csv(<span class="st">'./data/sh_temps.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SH = SH.set_index('Year')</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NH = NH.set_index('Year')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cd51d5ac" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> NH.melt(id_vars<span class="op">=</span>[<span class="st">'Year'</span>], value_vars<span class="op">=</span>[<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>], var_name<span class="op">=</span><span class="st">'Season'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
+<div id="45235228" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> SH.rename(columns<span class="op">=</span>{<span class="st">'DJF'</span>: <span class="st">"JJA"</span>, <span class="st">'MAM'</span>: <span class="st">'SON'</span>, <span class="st">'JJA'</span>: <span class="st">"DJF"</span>, <span class="st">'SON'</span>:<span class="st">'MAM'</span> })</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df_long_SH <span class="op">=</span> SH.melt(id_vars<span class="op">=</span>[<span class="st">'Year'</span>], value_vars<span class="op">=</span>[<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>], var_name<span class="op">=</span><span class="st">'Season'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> NH.melt(id_vars<span class="op">=</span>[<span class="st">'Year'</span>], value_vars<span class="op">=</span>[<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>], var_name<span class="op">=</span><span class="st">'Season'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df_long[<span class="st">'Hemisphere'</span>] <span class="op">=</span> <span class="st">'NH'</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df_long_SH[<span class="st">'Hemisphere'</span>] <span class="op">=</span> <span class="st">'SH'</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>df_full <span class="op">=</span> pd.concat([df_long, df_long_SH], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 'Year' into a string so we can concatenate it with 'Season' for a unique x-axis label</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Year'</span>] <span class="op">=</span> df_full[<span class="st">'Year'</span>].astype(<span class="bu">str</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Time'</span>] <span class="op">=</span> df_full[<span class="st">'Year'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> df_full[<span class="st">'Season'</span>]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Hue'</span>] <span class="op">=</span> df_full[<span class="st">'Hemisphere'</span>] <span class="op">+</span> <span class="st">' - '</span> <span class="op">+</span> df_full[<span class="st">'Season'</span>]</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.lineplot(data<span class="op">=</span>df_full, x<span class="op">=</span><span class="st">'Time'</span>, y<span class="op">=</span><span class="st">'Temperature'</span>, hue<span class="op">=</span><span class="st">'Hue'</span>, marker<span class="op">=</span><span class="st">'o'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df_long_SH <span class="op">=</span> SH.melt(id_vars<span class="op">=</span>[<span class="st">'Year'</span>], value_vars<span class="op">=</span>[<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>], var_name<span class="op">=</span><span class="st">'Season'</span>, value_name<span class="op">=</span><span class="st">'Temperature'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df_long[<span class="st">'Hemisphere'</span>] <span class="op">=</span> <span class="st">'NH'</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df_long_SH[<span class="st">'Hemisphere'</span>] <span class="op">=</span> <span class="st">'SH'</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df_full <span class="op">=</span> pd.concat([df_long, df_long_SH], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 'Year' into a string so we can concatenate it with 'Season' for a unique x-axis label</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Year'</span>] <span class="op">=</span> df_full[<span class="st">'Year'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Time'</span>] <span class="op">=</span> df_full[<span class="st">'Year'</span>] <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> df_full[<span class="st">'Season'</span>]</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>df_full[<span class="st">'Hue'</span>] <span class="op">=</span> df_full[<span class="st">'Hemisphere'</span>] <span class="op">+</span> <span class="st">' - '</span> <span class="op">+</span> df_full[<span class="st">'Season'</span>]</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Improve the readability of the x-axis labels</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plot.xaxis.set_major_locator(MaxNLocator(nbins<span class="op">=</span><span class="dv">20</span>)) </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Seasonal Temperature Variations in the Northern and Southern Hemispheres'</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Temperature Variation (°C)'</span>)</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend to distinguish the seasons and hemispheres</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Legend'</span>)</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize layout and show the plot</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>figg.tight_layout()</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.boxplot(data<span class="op">=</span>df_full, x<span class="op">=</span><span class="st">'Temperature'</span>, y<span class="op">=</span><span class="st">'Season'</span>, hue<span class="op">=</span><span class="st">'Hemisphere'</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>nth_label <span class="op">=</span> <span class="dv">10</span> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>season <span class="op">=</span> [<span class="st">'DJF'</span>, <span class="st">'MAM'</span>, <span class="st">'JJA'</span>, <span class="st">'SON'</span>]</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>season_name <span class="op">=</span> [<span class="st">'Winter'</span>, <span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>]</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> u, i <span class="kw">in</span> <span class="bu">enumerate</span>(season):</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    sub_full <span class="op">=</span> df_full[df_full[<span class="st">'Season'</span>]<span class="op">==</span>i] </span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    plot <span class="op">=</span> sns.lineplot(data<span class="op">=</span>sub_full, x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'Temperature'</span>, hue<span class="op">=</span><span class="st">'Hue'</span>, marker<span class="op">=</span><span class="st">'o'</span>, ax<span class="op">=</span>ax.flatten()[u])</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].set_title(<span class="ss">f'Temperature Variations for </span><span class="sc">{</span>season_name[u]<span class="sc">}</span><span class="ss">'</span>, fontsize<span class="op">=</span><span class="dv">20</span>) <span class="co"># Adjust title font size as needed</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>     <span class="co"># Increase font size for x label</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].set_ylabel(<span class="st">'Temperature Variation (°C)'</span>, fontsize<span class="op">=</span><span class="dv">13</span>) <span class="co"># Increase font size for y label</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> u <span class="op">&lt;=</span><span class="dv">1</span> :</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        ax.flatten()[u].set_xticks([])</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>        ax.flatten()[u].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>        ax.flatten()[u].set_xlabel(<span class="st">'Time'</span>, fontsize<span class="op">=</span><span class="dv">13</span>)</span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Temperature Variations in the Northern and Southern Hemispheres'</span>)</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Temperature Variation (°C)'</span>)</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Season'</span>)</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend to distinguish the seasons and hemispheres</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Legend'</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the x-tick labels to season names</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    ax.flatten()[u].legend(title<span class="op">=</span><span class="st">'Legend'</span>, fontsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index, label <span class="kw">in</span> <span class="bu">enumerate</span>(ax.flatten()[u].get_xticklabels()):</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> index <span class="op">%</span> nth_label <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            label.set_visible(<span class="va">False</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize layout and show the plot</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>figg.tight_layout()</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Legend'</span>)</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize layout and show the plot</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>figg.tight_layout()</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="coding_files/figure-html/cell-4-output-1.png" width="1909" height="756" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="coding_files/figure-html/cell-4-output-2.png" width="1909" height="756" class="figure-img"></p>
-</figure>
-</div>
-</div>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.boxplot(data<span class="op">=</span>df_full, y<span class="op">=</span><span class="st">'Temperature'</span>, x<span class="op">=</span><span class="st">'Season'</span>, hue<span class="op">=</span><span class="st">'Hemisphere'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Temperature Variations in the Northern and Southern Hemispheres'</span>, fontsize<span class="op">=</span><span class="dv">20</span>) <span class="co"># Adjust title font size as needed</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Season'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for x label</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Temperature Variation (°C)'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for y label</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the x-tick labels to season names</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'Winter'</span>, <span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>])</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Increase font size of the tick labels</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend to distinguish the seasons and hemispheres, adjust font size as needed</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Legend'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize layout and show the plot</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>figg.tight_layout()</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/n3/jhw9z8757c53pxf50v6qm8hw0000gn/T/ipykernel_27766/3268152251.py:54: UserWarning: The figure layout has changed to tight
-  figg.tight_layout()</code></pre>
+<pre><code>/var/folders/wr/323h4t5x63zbc0d1jr1l1nlm0000gn/T/ipykernel_81910/1810613142.py:57: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax.set_xticklabels(['Winter', 'Spring', 'Summer', 'Fall'])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="coding_files/figure-html/cell-4-output-2.png" width="1581" height="684" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="coding_files/figure-html/cell-4-output-3.png" width="1911" height="761" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
