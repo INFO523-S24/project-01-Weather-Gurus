@@ -89,3 +89,49 @@ plt.show()
 
 
 ```
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import joypy
+from matplotlib import cm
+
+zonann_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv')
+
+# Step 1: Convert the DataFrame from wide to long format
+data = pd.melt(zonann_temps, id_vars = ['Year', 'Glob'], 
+                       value_vars = ['EQU-24N', '24N-44N', '44N-64N', '64N-90N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S'],
+                       var_name = 'lat_range', value_name = 'temp_dev')
+
+
+# Pivot the data for heatmap plotting, with Year on the x-axis and latitude ranges on the y-axis
+heatmap_data_swapped_axes = data.pivot_table(index = "lat_range",columns= "Year",values = "temp_dev")
+
+
+# Define the specified order for latitude ranges
+lat_range_order = ['64N-90N', '44N-64N', '24N-44N', 'EQU-24N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S']
+
+# Reorder the dataframe according to the specified latitude range order
+heatmap_data_ordered = heatmap_data_swapped_axes.reindex(lat_range_order)
+
+# Plot the heatmap
+plt.figure(figsize = (8, 6))
+sns.heatmap(heatmap_data_ordered, cmap = "coolwarm", linewidths = 0.1)
+plt.title('Annual Temperature Annomalies Heatmap over each Latitude Range \nYears Colored in Red on the x Axis Show Reference Years')
+plt.xlabel('Year')
+plt.ylabel('Latitude Range')
+
+# Set x-tick labels to appear every five years and color reference years in red
+years = heatmap_data_ordered.columns.values
+ticks = range(0, len(years), 10)  # Show a tick every 5 years
+plt.xticks(ticks, [years[i] for i in ticks], rotation = 45)
+highlight_years = ['1950', '1955', '1960', '1965', '1970', '1975', '1980']
+for label in plt.gca().get_xticklabels():
+    if label.get_text() in highlight_years:
+        label.set_color('red')
+plt.savefig('./images/Heatmap.jpg',bbox_inches='tight')
+plt.show()
+
+
+```

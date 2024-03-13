@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.537">
 
   <meta name="author" content="Omid Zandi, Mohammad Farmani, Priom Mahmud, Praveen Kumar Pappala, Deema Albluwi, and Remi Hendershott">
-  <title>Project Title - Weather Gurus - Global Temperature Analysis</title>
+  <title>Project Title - Weather Gurus - Analysis on Global Temperature Anomalies</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,7 +326,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="images/Change.jpg" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Weather Gurus - Global Temperature Analysis</h1>
+  <h1 class="title">Weather Gurus - Analysis on Global Temperature Anomalies</h1>
   <p class="subtitle">INFO 523 - Spring 2023 - Project 1</p>
 
 <div class="quarto-title-authors">
@@ -341,29 +341,103 @@ Omid Zandi, Mohammad Farmani, Priom Mahmud, Praveen Kumar Pappala, Deema Albluwi
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
 <ul>
-<li><p>The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We’ll analyze yearly temperature anomalies using the J-D column from global_temps.csv, nh_temps.csv, and sh_temps.csv datasets to assess global and hemispheric trends.</p></li>
-<li><p>Additionally, we’ll focus on seasonal anomalies, examining DJF and JJA for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. To enrich our analysis, we’ll integrate 2023 temperature anomaly data from NASA’s GISS Surface Temperature Analysis, calculating both yearly and seasonal anomalies for that year.</p></li>
+<li><p>The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We’ll analyze yearly temperature anomalies from global_temps.csv, nh_temps.csv, and sh_temps.csv datasets to assess global and hemispheric trends.</p></li>
+<li><p>Additionally, we’ll focus on seasonal anomalies, examining for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. To enrich our analysis, we’ll integrate 2023 temperature anomaly data from NASA’s GISS Surface Temperature Analysis, calculating both yearly and seasonal anomalies for that year.</p></li>
 </ul>
 </section>
-<section id="question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record" class="slide level2">
-<h2>Question 1: How have zonal annual temperatures changed over the years? Can we detect any latitudinal pattern? When was the hottest year on record?</h2>
+<section id="question-1-analysis-on-zonal-temperature-anomalies" class="slide level2">
+<h2>Question 1: Analysis on Zonal Temperature Anomalies</h2>
 <ul>
-<li>The approach for this analysis will involve two distinct methods: heatmap visualization and time series analysis. The heatmap provides an intuitive grasp of the data by color mapping the temperature anomalies across latitudinal zones over time. This method is suitable for spotting overall trends and outliers in a comprehensive visual format.</li>
-<li>For the time series analysis, we will examine the changes in global and hemispheric mean temperatures over time. This will involve plotting the data, with a particular emphasis on trend lines to discern long-term changes. The use of color mapping in the heatmap serves to quickly convey the magnitude of anomalies, while the time series plot with its trend line will enable us to evaluate the trajectory of temperature changes more formally.</li>
+<li><p>We analysed the temperature anomalies across the latitudinal zones of earth. The approach involved two distinct methods:</p></li>
+<li><ol type="1">
+<li>Heatmap Visualizaton</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>Ridge Plot Visualization</li>
+</ol></li>
 </ul>
 </section>
 <section id="heat-map" class="slide level2">
 <h2>Heat Map</h2>
-</section>
-<section id="question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior" class="slide level2">
-<h2>Question 2: How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?</h2>
+
+<img data-src="images/Heatmap.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="ridge-plot" class="slide level2">
+<h2>Ridge Plot</h2>
+
+<!-- ```{python}
+#| label: Ridgeplots
+
+# Define the desired order for the latitude ranges
+lat_order = ['64N-90N', '44N-64N', '24N-44N', 'EQU-24N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S']
+
+# Ensure that the 'lat_range' column is of categorical type and set the categories and their order
+data['lat_range'] = pd.Categorical(data['lat_range'], categories=lat_order, ordered=True)
+
+# Create the ridgeline plot with the specified order
+fig, axes = joypy.joyplot(
+    data=data, 
+    by='lat_range', 
+    column='temp_dev',
+    colormap=cm.viridis, 
+    figsize=(12, 8),
+    alpha=0.6,
+    linewidth=1
+)
+
+plt.title('Ridgeline Plot of Temperature Deviations by Latitude Range', fontsize=14, pad=0)
+plt.xlabel('Temperature Annomaly')
+plt.xlim(-3, 3)
+
+plt.savefig('./images/Ridge.jpg')
+plt.show()
+``` -->
+<img data-src="images/Ridge.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="question-2-analysis-on-seasonal-temperature-anomalies" class="slide level2">
+<h2>Question 2: Analysis on Seasonal Temperature Anomalies</h2>
 <ul>
-<li>We compared the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. We can used time series and box plots to illustrate and compare the time series and statistical distribution of seasonal temperature anomalies in the northern and southern hemispheres to discuss how different and similar they are.</li>
-<li>The goal is to not only capture how seasonal temperatures have strayed from some long-term average, but how temperatures are fluctuating relative to even temporally local averages.</li>
+<li><p>We compared the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. For this, we used:</p></li>
+<li><ol type="1">
+<li>Time Series Analysis</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>Box Plot Visualization</li>
+</ol></li>
 </ul>
 </section>
-<section id="time-series" class="slide level2">
-<h2>Time Series</h2>
+<section id="time-series-analysis---line-plot" class="slide level2">
+<h2>Time Series Analysis - Line plot</h2>
+<div id="6345b22d" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/cell-7-output-1.png" width="1576" height="687"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplot" class="slide level2">
+<h2>Boxplot</h2>
+<div id="e551c68a" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/cell-8-output-1.png" width="1902" height="752"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<ul>
+<li><p>In conclusion, the proposed analysis of global surface temperature anomalies offers valuable insights into understanding climate change trends and their impacts on various regions.</p></li>
+<li><p>Through visualizations and analysis, the project seeks to inform strategic planning and adaptation measures to mitigate the adverse effects of climate change on human livelihoods and ecosystems.</p></li>
+<li><p>This endeavour underscores the importance of interdisciplinary collaboration and data-driven approaches in addressing the challenges posed by climate change.</p></li>
+</ul>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank You!</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
