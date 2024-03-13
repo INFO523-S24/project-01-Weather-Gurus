@@ -62,13 +62,174 @@ penguins = sns.load_dataset('penguins').dropna()
 - The approach for this analysis will involve two distinct methods: heatmap visualization and time series analysis. The heatmap provides an intuitive grasp of the data by color mapping the temperature anomalies across latitudinal zones over time. This method is suitable for spotting overall trends and outliers in a comprehensive visual format. 
 - For the time series analysis, we will examine the changes in global and hemispheric mean temperatures over time. This will involve plotting the data, with a particular emphasis on trend lines to discern long-term changes. The use of color mapping in the heatmap serves to quickly convey the magnitude of anomalies, while the time series plot with its trend line will enable us to evaluate the trajectory of temperature changes more formally.
 
+## Load and preprocess data
 
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import joypy
+from matplotlib import cm
+
+zonann_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv')
+
+# Step 1: Convert the DataFrame from wide to long format
+data = pd.melt(zonann_temps, id_vars = ['Year', 'Glob'], 
+                       value_vars = ['EQU-24N', '24N-44N', '44N-64N', '64N-90N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S'],
+                       var_name = 'lat_range', value_name = 'temp_dev')
+
+
+# Pivot the data for heatmap plotting, with Year on the x-axis and latitude ranges on the y-axis
+heatmap_data_swapped_axes = data.pivot_table(index = "lat_range",columns= "Year",values = "temp_dev")
+```
 
 ## Heat Map
 
+```{python}
+#| label: Heatmap
+
+# Define the specified order for latitude ranges
+lat_range_order = ['64N-90N', '44N-64N', '24N-44N', 'EQU-24N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S']
+
+# Reorder the dataframe according to the specified latitude range order
+heatmap_data_ordered = heatmap_data_swapped_axes.reindex(lat_range_order)
+
+# Plot the heatmap
+plt.figure(figsize = (12, 8))
+sns.heatmap(heatmap_data_ordered, cmap = "coolwarm", linewidths = 0.1)
+plt.title('Annual Temperature Annomalies Heatmap over each Latitude Range \nYears Colored in Red on the x Axis Show Reference Years')
+plt.xlabel('Year')
+plt.ylabel('Latitude Range')
+
+# Set x-tick labels to appear every five years and color reference years in red
+years = heatmap_data_ordered.columns.values
+ticks = range(0, len(years), 5)  # Show a tick every 5 years
+plt.xticks(ticks, [years[i] for i in ticks], rotation = 45)
+highlight_years = ['1950', '1955', '1960', '1965', '1970', '1975', '1980']
+for label in plt.gca().get_xticklabels():
+    if label.get_text() in highlight_years:
+        label.set_color('red')
+
+plt.show()
+```
+
+## Ridge Plot
+
+```{python}
+#| label: Ridgeplots
+
+# Define the desired order for the latitude ranges
+lat_order = ['64N-90N', '44N-64N', '24N-44N', 'EQU-24N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S']
+
+# Ensure that the 'lat_range' column is of categorical type and set the categories and their order
+data['lat_range'] = pd.Categorical(data['lat_range'], categories=lat_order, ordered=True)
+
+# Create the ridgeline plot with the specified order
+fig, axes = joypy.joyplot(
+    data=data, 
+    by='lat_range', 
+    column='temp_dev',
+    colormap=cm.viridis, 
+    figsize=(12, 8),
+    alpha=0.6,
+    linewidth=1
+)
+
+plt.title('Ridgeline Plot of Temperature Deviations by Latitude Range', fontsize=14, pad=0)
+plt.xlabel('Temperature Annomaly')
+plt.xlim(-3, 3)
+plt.show()
+```
 
 ## Question 2: How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?
 - We compared the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. We can used time series and box plots to illustrate and compare the time series and statistical distribution of seasonal temperature anomalies in the northern and southern hemispheres to discuss how different and similar they are. 
 - The goal is to not only capture how seasonal temperatures have strayed from some long-term average, but how temperatures are fluctuating relative to even temporally local averages. 
 
-## Time Series
+
+```{python}
+import pandas as pd 
+import numpy as np  
+import seaborn as sns
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
+```
+
+
+```{python}
+NH = pd.read_csv('./data/nh_temps.csv')
+SH = pd.read_csv('./data/sh_temps.csv')
+# SH = SH.set_index('Year')
+# NH = NH.set_index('Year')
+```
+
+## Plots
+```{python}
+SH = SH.rename(columns={'DJF': "JJA", 'MAM': 'SON', 'JJA': "DJF", 'SON':'MAM' })
+
+
+df_long = NH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
+
+
+
+df_long_SH = SH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
+
+df_long['Hemisphere'] = 'NH'
+df_long_SH['Hemisphere'] = 'SH'
+df_full = pd.concat([df_long, df_long_SH], ignore_index=True)
+# Convert 'Year' into a string so we can concatenate it with 'Season' for a unique x-axis label
+
+df_full['Year'] = df_full['Year'].astype(str)
+df_full['Time'] = df_full['Year'] + " " + df_full['Season']
+df_full['Hue'] = df_full['Hemisphere'] + ' - ' + df_full['Season']
+
+
+nth_label = 10 
+season = ['DJF', 'MAM', 'JJA', 'SON']
+season_name = ['Winter', 'Spring', 'Summer', 'Fall']
+figg, ax = plt.subplots(nrows=2, ncols=2, figsize=(20, 8))
+for u, i in enumerate(season):
+    sub_full = df_full[df_full['Season']==i] 
+
+    plot = sns.lineplot(data=sub_full, x='Year', y='Temperature', hue='Hue', marker='o', ax=ax.flatten()[u])
+
+# Setting the title and labels for the plot
+    ax.flatten()[u].set_title(f'Temperature Variations for {season_name[u]}', fontsize=20) # Adjust title font size as needed
+     # Increase font size for x label
+    ax.flatten()[u].set_ylabel('Temperature Variation (°C)', fontsize=13) # Increase font size for y label
+    ax.flatten()[u].tick_params(axis='y', labelsize=13)
+    if u <=1 :
+        ax.flatten()[u].set_xticks([])
+        ax.flatten()[u].get_xaxis().set_visible(False)
+    else :
+        ax.flatten()[u].set_xlabel('Time', fontsize=13)
+
+# Change the x-tick labels to season names
+    ax.flatten()[u].legend(title='Legend', fontsize=13)
+    for index, label in enumerate(ax.flatten()[u].get_xticklabels()):
+        if index % nth_label != 0:
+            label.set_visible(False)
+
+
+
+figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
+plot = sns.boxplot(data=df_full, y='Temperature', x='Season', hue='Hemisphere', ax=ax)
+
+# Setting the title and labels for the plot
+ax.set_title('Temperature Variations in the Northern and Southern Hemispheres', fontsize=20) # Adjust title font size as needed
+ax.set_xlabel('Season', fontsize=16) # Increase font size for x label
+ax.set_ylabel('Temperature Variation (°C)', fontsize=16) # Increase font size for y label
+
+# Change the x-tick labels to season names
+ax.set_xticklabels(['Winter', 'Spring', 'Summer', 'Fall'])
+
+# Increase font size of the tick labels
+ax.tick_params(axis='x', labelsize=16)
+ax.tick_params(axis='y', labelsize=16)
+
+# Add a legend to distinguish the seasons and hemispheres, adjust font size as needed
+ax.legend(title='Legend', fontsize=15)
+
+# Optimize layout and show the plot
+figg.tight_layout()
+plt.show()
+```
