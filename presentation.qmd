@@ -7,6 +7,7 @@ title-slide-attributes:
   data-background-size: stretch
   data-background-opacity: "0.7"
   data-slide-number: none
+
 format:
   revealjs:
     theme:  ['data/customtheming.scss']
@@ -54,9 +55,9 @@ sns.set_context("notebook", font_scale=1.1)
 
 ## Introduction
 
--   The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We'll analyze yearly temperature anomalies from global_temps.csv, nh_temps.csv, and sh_temps.csv datasets to assess global and hemispheric trends. 
+-   The dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We'll analyze yearly  temperature anomalies datasets to assess global and hemispheric trends. 
 
--   Additionally, we'll focus on seasonal anomalies, examining for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. To enrich our analysis, we'll integrate 2023 temperature anomaly data from NASA's GISS Surface Temperature Analysis, calculating both yearly and seasonal anomalies for that year.
+-   Additionally, we'll focus on seasonal anomalies, examining for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. 
 
 ## Question 1:  Analysis on Zonal Temperature Anomalies
 
@@ -109,101 +110,15 @@ plt.show()
 -   1. Time Series Analysis
 -   2. Box Plot Visualization
 
-```{python}
-import pandas as pd 
-import numpy as np  
-import seaborn as sns
-import matplotlib.pyplot as plt
-from matplotlib.ticker import MaxNLocator
-```
 
-
-```{python}
-NH = pd.read_csv('./data/nh_temps.csv')
-SH = pd.read_csv('./data/sh_temps.csv')
-# SH = SH.set_index('Year')
-# NH = NH.set_index('Year')
-```
 
 ## Time Series Analysis - Line plot
-
-```{python, fig-align='center'}
-
-SH = SH.rename(columns={'DJF': "JJA", 'MAM': 'SON', 'JJA': "DJF", 'SON':'MAM' })
-
-
-df_long = NH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
-
-
-
-df_long_SH = SH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
-
-df_long['Hemisphere'] = 'NH'
-df_long_SH['Hemisphere'] = 'SH'
-df_full = pd.concat([df_long, df_long_SH], ignore_index=True)
-# Convert 'Year' into a string so we can concatenate it with 'Season' for a unique x-axis label
-
-df_full['Year'] = df_full['Year'].astype(str)
-df_full['Time'] = df_full['Year'] + " " + df_full['Season']
-df_full['Hue'] = df_full['Hemisphere'] + ' - ' + df_full['Season']
-
-
-nth_label = 10 
-season = ['DJF', 'MAM', 'JJA', 'SON']
-season_name = ['Winter', 'Spring', 'Summer', 'Fall']
-figg, ax = plt.subplots(nrows=2, ncols=2, figsize=(20, 8))
-for u, i in enumerate(season):
-    sub_full = df_full[df_full['Season']==i] 
-
-    plot = sns.lineplot(data=sub_full, x='Year', y='Temperature', hue='Hue', marker='o', ax=ax.flatten()[u])
-
-# Setting the title and labels for the plot
-    ax.flatten()[u].set_title(f'Temperature Variations for {season_name[u]}', fontsize=20) # Adjust title font size as needed
-     # Increase font size for x label
-    ax.flatten()[u].set_ylabel('Temperature Variation (°C)', fontsize=13) # Increase font size for y label
-    ax.flatten()[u].tick_params(axis='y', labelsize=13)
-    if u <=1 :
-        ax.flatten()[u].set_xticks([])
-        ax.flatten()[u].get_xaxis().set_visible(False)
-    else :
-        ax.flatten()[u].set_xlabel('Time', fontsize=13)
-
-# Change the x-tick labels to season names
-    ax.flatten()[u].legend(title='Legend', fontsize=13)
-    for index, label in enumerate(ax.flatten()[u].get_xticklabels()):
-        if index % nth_label != 0:
-            label.set_visible(False)
-
-plt.savefig('./images/timeseries.jpg',bbox_inches='tight')
-```
-
+![](./images/timeseis.jpg){fig-align="center"}
 
 
 ## Boxplot
-```{python}
-figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
-plot = sns.boxplot(data=df_full, y='Temperature', x='Season', hue='Hemisphere', ax=ax)
+![](./images/boxplot.jpg){fig-align="center"}
 
-# Setting the title and labels for the plot
-ax.set_title('Temperature Variations in the Northern and Southern Hemispheres', fontsize=20) # Adjust title font size as needed
-ax.set_xlabel('Season', fontsize=16) # Increase font size for x label
-ax.set_ylabel('Temperature Variation (°C)', fontsize=16) # Increase font size for y label
-
-# Change the x-tick labels to season names
-ax.set_xticklabels(['Winter', 'Spring', 'Summer', 'Fall'])
-
-# Increase font size of the tick labels
-ax.tick_params(axis='x', labelsize=16)
-ax.tick_params(axis='y', labelsize=16)
-
-# Add a legend to distinguish the seasons and hemispheres, adjust font size as needed
-ax.legend(title='Legend', fontsize=15)
-
-# Optimize layout and show the plot
-figg.tight_layout()
-plt.savefig('./images/boxplot.jpg',bbox_inches='tight')
-plt.show()
-```
 
 ## Conclusion
 
@@ -213,4 +128,5 @@ plt.show()
 
 - This endeavour underscores the importance of interdisciplinary collaboration and data-driven approaches in addressing the challenges posed by climate change.
 
-## Thank You!
+## 
+![](images/thank-you.webp){fig-align="center"}

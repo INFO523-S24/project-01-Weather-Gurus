@@ -53,7 +53,7 @@
     "href": "presentation.html#introduction",
     "title": "Weather Gurus - Analysis on Global Temperature Anomalies",
     "section": "Introduction",
-    "text": "Introduction\n\nThe dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We’ll analyze yearly temperature anomalies from global_temps.csv, nh_temps.csv, and sh_temps.csv datasets to assess global and hemispheric trends.\nAdditionally, we’ll focus on seasonal anomalies, examining for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere. To enrich our analysis, we’ll integrate 2023 temperature anomaly data from NASA’s GISS Surface Temperature Analysis, calculating both yearly and seasonal anomalies for that year."
+    "text": "Introduction\n\nThe dataset contains four CSV files, providing temperature anomalies across different spatial and temporal scales for a long period from 1880 to 2022. We’ll analyze yearly temperature anomalies datasets to assess global and hemispheric trends.\nAdditionally, we’ll focus on seasonal anomalies, examining for the Northern Hemisphere and their inverted counterparts for the Southern Hemisphere."
   },
   {
     "objectID": "presentation.html#question-1-how-have-zonal-annual-temperatures-changed-over-the-years-can-we-detect-any-latitudinal-pattern-when-was-the-hottest-year-on-record",
@@ -165,6 +165,6 @@
     "href": "presentation.html#thank-you",
     "title": "Weather Gurus - Analysis on Global Temperature Anomalies",
     "section": "Thank You!",
-    "text": "Thank You!"
+    "text": "Thank You!\n\n\nAlt text"
   }
 ]
