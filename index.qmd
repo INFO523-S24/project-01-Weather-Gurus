@@ -183,7 +183,10 @@ for u, i in enumerate(season):
             label.set_visible(False)
 
 #figg.savefig('./images/timeseis.jpg',bbox_inches='tight')
+```
 
+Across all graphs, there's a noticeable increase in temperature variation, particularly from around the 1970s onwards, reflecting a trend towards warming in both hemispheres. This warming trend appears more pronounced during the Winter and Spring seasons. The data indicates some volatility in temperature changes year on year, but the overall trajectory suggests a significant rise in global temperatures, consistent with patterns of climate change.
+```{python,  message=FALSE, warning=FALSE}
 
 figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
 plot = sns.boxplot(data=df_full, y='Temperature', x='Season', hue='Hemisphere', ax=ax)
@@ -212,9 +215,11 @@ plt.show()
 
 ```
 
-Discussion: Across all graphs, there's a noticeable increase in temperature variation, particularly from around the 1970s onwards, reflecting a trend towards warming in both hemispheres. This warming trend appears more pronounced during the Winter and Spring seasons. The data indicates some volatility in temperature changes year on year, but the overall trajectory suggests a significant rise in global temperatures, consistent with patterns of climate change.
+Discussion: 
 
 The boxplot summarizes temperature variations across seasons in the Northern and Southern Hemispheres, revealing subtle yet insightful differences. In the Northern Hemisphere, a greater variability in winter temperatures is apparent, suggested by longer whiskers and more outliers, likely influenced by its extensive landmass. Spring shows a slightly higher median temperature variation in the Northern Hemisphere, indicative of consistently warmer springs than in the Southern Hemisphere. Interestingly, during summer, the two hemispheres display nearly identical temperature variations, suggesting a universal pattern of summer temperature changes. Come fall, the Southern Hemisphere exhibits a slightly wider range of temperature variations, which could point towards a more dynamic climatic response during this season. 
 
 Overall, while median temperature variations are generally comparable between the hemispheres, the Northern Hemisphere tends to exhibit greater extremes, particularly in winter and spring, which can be attributed to its larger landmass and consequent continental climate influence.
 
+## Conclusion
+Our extensive exploratory data analysis of the temperature anomalies dataset indicates a heightened susceptibility to global warming in the Northern Hemisphere, particularly around the North Pole. This trend may be attributed to the higher population density in the Northern Hemisphere. Furthermore, temperature anomalies in the mid-latitudes and equatorial regions exhibit more stable and gradual changes. Consequently, developing predictive models for temperature anomalies will likely pose greater challenges in the Arctic region.
