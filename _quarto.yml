@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: Project Title
+  title: "<img src='/images/climate_icon.png' alt='Climate' style='width: 1.75em; height: 1.75em; border-radius: 50%'> <b>Weather Gurus  </b>" 
   navbar:
     right:
       - icon: github

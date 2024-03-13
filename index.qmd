@@ -23,7 +23,7 @@ Approach: The approach for this analysis will involve two distinct methods: heat
 
 ### Code Block 1: Load and preprocess the data
 
-```{python}
+```{python,  message=FALSE, warning=FALSE}
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -45,7 +45,7 @@ heatmap_data_swapped_axes = data.pivot_table(index = "lat_range",columns= "Year"
 
 ### Code Block 2: Heatmap for visualizing temperature anomalies
 
-```{python}
+```{python,  message=FALSE, warning=FALSE}
 #| label: Heatmap
 
 # Define the specified order for latitude ranges
@@ -75,7 +75,7 @@ plt.show()
 
 ### Code Block 3: Ridgeplots of zonnal temperature annomalies
 
-```{python}
+```{python,  message=FALSE, warning=FALSE}
 #| label: Ridgeplots
 
 # Define the desired order for the latitude ranges
@@ -119,7 +119,7 @@ Approach: We'll perform comparative analysis by comparing 2023 average temperatu
 
 Analysis: 
 
-``` {python}
+``` {python,  message=FALSE, warning=FALSE}
 
 import pandas as pd 
 import numpy as np  
@@ -128,14 +128,14 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 ```
 
-``` {python}
+``` {python, message=FALSE, warning=FALSE}
 NH = pd.read_csv('./data/nh_temps.csv')
 SH = pd.read_csv('./data/sh_temps.csv')
 # SH = SH.set_index('Year')
 # NH = NH.set_index('Year')
 ```
 
-```{python}
+```{python, message=FALSE, warning=FALSE}
 
 SH = SH.rename(columns={'DJF': "JJA", 'MAM': 'SON', 'JJA': "DJF", 'SON':'MAM' })
 
@@ -182,7 +182,7 @@ for u, i in enumerate(season):
         if index % nth_label != 0:
             label.set_visible(False)
 
-figg.savefig('./images/timeseis.jpg',bbox_inches='tight')
+#figg.savefig('./images/timeseis.jpg',bbox_inches='tight')
 
 
 figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
@@ -206,7 +206,7 @@ ax.legend(title='Legend', fontsize=15)
 # Optimize layout and show the plot
 figg.tight_layout()
 plt.show()
-figg.savefig('./images/boxplot.jpg',bbox_inches='tight')
+#figg.savefig('./images/boxplot.jpg',bbox_inches='tight')
 
 
 
