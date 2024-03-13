@@ -16,7 +16,7 @@ SH = pd.read_csv('./data/sh_temps.csv')
 
 ```{python}
 
-
+SH = SH.rename(columns={'DJF': "JJA", 'MAM': 'SON', 'JJA': "DJF", 'SON':'MAM' })
 
 
 df_long = NH.melt(id_vars=['Year'], value_vars=['DJF', 'MAM', 'JJA', 'SON'], var_name='Season', value_name='Temperature')
@@ -35,47 +35,55 @@ df_full['Time'] = df_full['Year'] + " " + df_full['Season']
 df_full['Hue'] = df_full['Hemisphere'] + ' - ' + df_full['Season']
 
 
-figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
-plot = sns.lineplot(data=df_full, x='Time', y='Temperature', hue='Hue', marker='o', ax=ax)
+nth_label = 10 
+season = ['DJF', 'MAM', 'JJA', 'SON']
+season_name = ['Winter', 'Spring', 'Summer', 'Fall']
+figg, ax = plt.subplots(nrows=2, ncols=2, figsize=(20, 8))
+for u, i in enumerate(season):
+    sub_full = df_full[df_full['Season']==i] 
 
-# Improve the readability of the x-axis labels
-plot.xaxis.set_major_locator(MaxNLocator(nbins=20)) 
-
-# Setting the title and labels for the plot
-ax.set_title('Seasonal Temperature Variations in the Northern and Southern Hemispheres')
-ax.set_xlabel('Time')
-ax.set_ylabel('Temperature Variation (°C)')
-
-# Add a legend to distinguish the seasons and hemispheres
-ax.legend(title='Legend')
-
-# Optimize layout and show the plot
-figg.tight_layout()
-plt.show()
-
-
-figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
-plot = sns.boxplot(data=df_full, x='Temperature', y='Season', hue='Hemisphere', ax=ax)
-
+    plot = sns.lineplot(data=sub_full, x='Year', y='Temperature', hue='Hue', marker='o', ax=ax.flatten()[u])
 
 # Setting the title and labels for the plot
-ax.set_title('Temperature Variations in the Northern and Southern Hemispheres')
-ax.set_xlabel('Temperature Variation (°C)')
-ax.set_ylabel('Season')
+    ax.flatten()[u].set_title(f'Temperature Variations for {season_name[u]}', fontsize=20) # Adjust title font size as needed
+     # Increase font size for x label
+    ax.flatten()[u].set_ylabel('Temperature Variation (°C)', fontsize=13) # Increase font size for y label
+    ax.flatten()[u].tick_params(axis='y', labelsize=13)
+    if u <=1 :
+        ax.flatten()[u].set_xticks([])
+        ax.flatten()[u].get_xaxis().set_visible(False)
+    else :
+        ax.flatten()[u].set_xlabel('Time', fontsize=13)
 
-# Add a legend to distinguish the seasons and hemispheres
-ax.legend(title='Legend')
+# Change the x-tick labels to season names
+    ax.flatten()[u].legend(title='Legend', fontsize=13)
+    for index, label in enumerate(ax.flatten()[u].get_xticklabels()):
+        if index % nth_label != 0:
+            label.set_visible(False)
+
+
+
+figg, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 8))
+plot = sns.boxplot(data=df_full, y='Temperature', x='Season', hue='Hemisphere', ax=ax)
+
+# Setting the title and labels for the plot
+ax.set_title('Temperature Variations in the Northern and Southern Hemispheres', fontsize=20) # Adjust title font size as needed
+ax.set_xlabel('Season', fontsize=16) # Increase font size for x label
+ax.set_ylabel('Temperature Variation (°C)', fontsize=16) # Increase font size for y label
+
+# Change the x-tick labels to season names
+ax.set_xticklabels(['Winter', 'Spring', 'Summer', 'Fall'])
+
+# Increase font size of the tick labels
+ax.tick_params(axis='x', labelsize=16)
+ax.tick_params(axis='y', labelsize=16)
+
+# Add a legend to distinguish the seasons and hemispheres, adjust font size as needed
+ax.legend(title='Legend', fontsize=15)
 
 # Optimize layout and show the plot
 figg.tight_layout()
 plt.show()
-ax.legend(title='Legend')
-
-# Optimize layout and show the plot
-figg.tight_layout()
-plt.show()
-
-
 
 
 
