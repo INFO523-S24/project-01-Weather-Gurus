@@ -21,73 +21,85 @@ Introduction: Introduction: We used variables inside the zonnan_temps.csv datase
 Approach: The approach for this analysis will involve two distinct methods: heatmap visualization and time series analysis. The heatmap provides an intuitive grasp of the data by color mapping the temperature anomalies across latitudinal zones over time. This method is suitable for spotting overall trends and outliers in a comprehensive visual format. For the time series analysis, we will examine the changes in global and hemispheric mean temperatures over time. This will involve plotting the data, with a particular emphasis on trend lines to discern long-term changes. The use of color mapping in the heatmap serves to quickly convey the magnitude of anomalies, while the time series plot with its trend line will enable us to evaluate the trajectory of temperature changes more formally.
 
 
-Analysis: 
 ### Code Block 1: Load and preprocess the data
 
 ```{python}
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import joypy
+from matplotlib import cm
 
-# Load the dataset, will add path 
-data = pd.read_csv('')
+zonann_temps = pd.read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-11/zonann_temps.csv')
 
-# Data preprocessing steps
+# Step 1: Convert the DataFrame from wide to long format
+data = pd.melt(zonann_temps, id_vars = ['Year', 'Glob'], 
+                       value_vars = ['EQU-24N', '24N-44N', '44N-64N', '64N-90N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S'],
+                       var_name = 'lat_range', value_name = 'temp_dev')
 
-data.fillna(data.mean(), inplace=True)
+
+# Pivot the data for heatmap plotting, with Year on the x-axis and latitude ranges on the y-axis
+heatmap_data_swapped_axes = data.pivot("lat_range", "Year", "temp_dev")
+
 ```
 
 ### Code Block 2: Heatmap for visualizing temperature anomalies
 
 ```{python}
+#| label: Heatmap
+
+# Define the specified order for latitude ranges
+lat_range_order = ['64N-90N', '44N-64N', '24N-44N', 'EQU-24N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S']
+
+# Reorder the dataframe according to the specified latitude range order
+heatmap_data_ordered = heatmap_data_swapped_axes.reindex(lat_range_order)
 
 # Plot the heatmap
-plt.figure(figsize=(15, 8))
-sns.heatmap(data, cmap="coolwarm", linewidths=0.1)
-plt.title('Annual Temperature Anomalies Heatmap over each Latitude Range')
+plt.figure(figsize = (12, 8))
+sns.heatmap(heatmap_data_ordered, cmap = "coolwarm", linewidths = 0.1)
+plt.title('Annual Temperature Annomalies Heatmap over each Latitude Range \nYears Colored in Red on the x Axis Show Reference Years')
 plt.xlabel('Year')
 plt.ylabel('Latitude Range')
 
-# Define a function to highlight certain years in red
-def highlight_years(ax, years_to_highlight):
-    for label in ax.get_xticklabels():
-        if label.get_text() in years_to_highlight:
-            label.set_color('red')
-
-# Apply the highlight function to the x-tick labels
-highlight_years(plt.gca(), ['1950', '1955', '1960', '1965', '1970', '1975', '1980'])
+# Set x-tick labels to appear every five years and color reference years in red
+years = heatmap_data_ordered.columns.values
+ticks = range(0, len(years), 5)  # Show a tick every 5 years
+plt.xticks(ticks, [years[i] for i in ticks], rotation = 45)
+highlight_years = ['1950', '1955', '1960', '1965', '1970', '1975', '1980']
+for label in plt.gca().get_xticklabels():
+    if label.get_text() in highlight_years:
+        label.set_color('red')
 
 plt.show()
-
 ```
 
-### Code Block 3: Time series analysis
+### Code Block 3: Ridgeplots of zonnal temperature annomalies
 
 ```{python}
-# Time series plot of global-mean monthly temperature anomalies
+#| label: Ridgeplots
 
-# Load the global-mean monthly data, will add path
-global_mean_data = pd.read_csv('path_to_global_mean_data.csv')
+# Define the desired order for the latitude ranges
+lat_order = ['64N-90N', '44N-64N', '24N-44N', 'EQU-24N', '24S-EQU', '44S-24S', '64S-44S', '90S-64S']
 
-# Convert the 'Year' column to datetime type
-global_mean_data['Year'] = pd.to_datetime(global_mean_data['Year'], format='%Y')
+# Ensure that the 'lat_range' column is of categorical type and set the categories and their order
+data['lat_range'] = pd.Categorical(data['lat_range'], categories=lat_order, ordered=True)
 
-# Set the 'Year' column as the index
-global_mean_data.set_index('Year', inplace=True)
+# Create the ridgeline plot with the specified order
+fig, axes = joypy.joyplot(
+    data=data, 
+    by='lat_range', 
+    column='temp_dev',
+    colormap=cm.viridis, 
+    figsize=(12, 8),
+    alpha=0.6,
+    linewidth=1
+)
 
-# Plot the global-mean monthly temperature data
-plt.figure(figsize=(15, 5))
-plt.plot(global_mean_data.index, global_mean_data['Global_mean_temp'], label='Global Mean Temp')
+plt.title('Ridgeline Plot of Temperature Deviations by Latitude Range', fontsize=14, pad=0)
+plt.xlabel('Temperature Annomaly')
+plt.xlim(-3, 3)
+plt.show()
 
-# Add trend line using rolling average or polynomial fitting
-
-rolling_mean = global_mean_data['Global_mean_temp'].rolling(window=10).mean()
-plt.plot(global_mean_data.index, rolling_mean, label='10-year Rolling Mean', color='red')
-
-plt.title('Time Series of Global Mean Monthly Temperature Anomalies')
-plt.xlabel('Year')
-plt.ylabel('Temperature Anomaly (°C)')
-plt.legend()
 
 ```
 
