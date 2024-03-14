@@ -169,6 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#code-block-3-ridgeplots-of-zonnal-temperature-annomalies" id="toc-code-block-3-ridgeplots-of-zonnal-temperature-annomalies" class="nav-link" data-scroll-target="#code-block-3-ridgeplots-of-zonnal-temperature-annomalies">Code Block 3: Ridgeplots of zonnal temperature annomalies</a></li>
   </ul></li>
   <li><a href="#question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior" id="toc-question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior" class="nav-link" data-scroll-target="#question-2-how-have-the-hemispheric-seasonal-monthly-temperatures-changed-over-the-years-can-we-detect-any-upward-or-downward-trend-in-any-seasons-months-and-any-of-the-hemispheres-which-seasons-months-show-more-erratic-behavior">Question 2: How have the hemispheric seasonal (monthly) temperatures changed over the years? Can we detect any upward or downward trend in any seasons (months) and any of the hemispheres? Which seasons (months) show more erratic behavior?</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -212,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Approach: The approach for this analysis will involve two distinct methods: heatmap visualization and time series analysis. The heatmap provides an intuitive grasp of the data by color mapping the temperature anomalies across latitudinal zones over time. This method is suitable for spotting overall trends and outliers in a comprehensive visual format. For the time series analysis, we will examine the changes in global and hemispheric mean temperatures over time. This will involve plotting the data, with a particular emphasis on trend lines to discern long-term changes. The use of color mapping in the heatmap serves to quickly convey the magnitude of anomalies, while the time series plot with its trend line will enable us to evaluate the trajectory of temperature changes more formally.</p>
 <section id="code-block-1-load-and-preprocess-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="code-block-1-load-and-preprocess-the-data">Code Block 1: Load and preprocess the data</h3>
-<div id="de2b3711" class="cell" data-execution_count="1">
+<div id="43080d8a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -313,20 +314,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Introduction: We will use nh_temps.csv and sh_temps.csv datasets. We should start by converting the dataset of each hemisphere to a long format by defining one new column for month (season) and one column that shows the hemispheres (NH and SH). Finally, we can merge the data frames vertically to arrive at a one comprehensive dataframe. We can compare the pattern of seasonal temperature anomalies over the Northern and Southern hemispheres separately and collectively. We can use time series, box plots, or histograms to illustrate and compare the time series and statistical distribution of seasonal temperature anomalies in the northern and southern hemispheres to discuss how different and similar they are. It may be interesting to create a similar visualization to the previous question with deviation from long-term anomalies. This would not only capture how seasonal temperatures have strayed from some long-term average, but how temperatures are fluctuating relative to even temporally local averages.</p>
 <p>Approach: We’ll perform comparative analysis by comparing 2023 average temperature anomalies with historical peaks, both globally and hemispherically, while also scrutinizing seasonal variations to deepen our understanding.</p>
 <p>Analysis:</p>
-<div id="5b869148" class="cell" data-execution_count="4">
+<div id="43811f4f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np  </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.ticker <span class="im">import</span> MaxNLocator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8c010d09" class="cell" data-execution_count="5">
+<div id="bc1a3026" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>NH <span class="op">=</span> pd.read_csv(<span class="st">'./data/nh_temps.csv'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> pd.read_csv(<span class="st">'./data/sh_temps.csv'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SH = SH.set_index('Year')</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NH = NH.set_index('Year')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4aaa2ca2" class="cell" data-execution_count="6">
+<div id="192e1015" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SH <span class="op">=</span> SH.rename(columns<span class="op">=</span>{<span class="st">'DJF'</span>: <span class="st">"JJA"</span>, <span class="st">'MAM'</span>: <span class="st">'SON'</span>, <span class="st">'JJA'</span>: <span class="st">"DJF"</span>, <span class="st">'SON'</span>:<span class="st">'MAM'</span> })</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -372,53 +373,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> index <span class="op">%</span> nth_label <span class="op">!=</span> <span class="dv">0</span>:</span>
 <span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>            label.set_visible(<span class="va">False</span>)</span>
 <span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co">#figg.savefig('./images/timeseis.jpg',bbox_inches='tight')</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.boxplot(data<span class="op">=</span>df_full, y<span class="op">=</span><span class="st">'Temperature'</span>, x<span class="op">=</span><span class="st">'Season'</span>, hue<span class="op">=</span><span class="st">'Hemisphere'</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Temperature Variations in the Northern and Southern Hemispheres'</span>, fontsize<span class="op">=</span><span class="dv">20</span>) <span class="co"># Adjust title font size as needed</span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Season'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for x label</span></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Temperature Variation (°C)'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for y label</span></span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the x-tick labels to season names</span></span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'Winter'</span>, <span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>])</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Increase font size of the tick labels</span></span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend to distinguish the seasons and hemispheres, adjust font size as needed</span></span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Legend'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize layout and show the plot</span></span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>figg.tight_layout()</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="co">#figg.savefig('./images/boxplot.jpg',bbox_inches='tight')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="co">#figg.savefig('./images/timeseis.jpg',bbox_inches='tight')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-1.png" width="1581" height="684" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Across all graphs, there’s a noticeable increase in temperature variation, particularly from around the 1970s onwards, reflecting a trend towards warming in both hemispheres. This warming trend appears more pronounced during the Winter and Spring seasons. The data indicates some volatility in temperature changes year on year, but the overall trajectory suggests a significant rise in global temperatures, consistent with patterns of climate change.</p>
+<div id="1a6ce2d6" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>figg, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.boxplot(data<span class="op">=</span>df_full, y<span class="op">=</span><span class="st">'Temperature'</span>, x<span class="op">=</span><span class="st">'Season'</span>, hue<span class="op">=</span><span class="st">'Hemisphere'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the title and labels for the plot</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Temperature Variations in the Northern and Southern Hemispheres'</span>, fontsize<span class="op">=</span><span class="dv">20</span>) <span class="co"># Adjust title font size as needed</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Season'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for x label</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Temperature Variation (°C)'</span>, fontsize<span class="op">=</span><span class="dv">16</span>) <span class="co"># Increase font size for y label</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the x-tick labels to season names</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">'Winter'</span>, <span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>])</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Increase font size of the tick labels</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend to distinguish the seasons and hemispheres, adjust font size as needed</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Legend'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimize layout and show the plot</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>figg.tight_layout()</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#figg.savefig('./images/boxplot.jpg',bbox_inches='tight')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/wr/323h4t5x63zbc0d1jr1l1nlm0000gn/T/ipykernel_91777/1802720549.py:58: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+<pre><code>/var/folders/wr/323h4t5x63zbc0d1jr1l1nlm0000gn/T/ipykernel_94553/3706441438.py:10: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
   ax.set_xticklabels(['Winter', 'Spring', 'Summer', 'Fall'])</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-7-output-2.png" width="1581" height="684" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-7-output-3.png" width="1911" height="761" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-8-output-2.png" width="1911" height="761" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Discussion: Across all graphs, there’s a noticeable increase in temperature variation, particularly from around the 1970s onwards, reflecting a trend towards warming in both hemispheres. This warming trend appears more pronounced during the Winter and Spring seasons. The data indicates some volatility in temperature changes year on year, but the overall trajectory suggests a significant rise in global temperatures, consistent with patterns of climate change.</p>
+<p>Discussion:</p>
 <p>The boxplot summarizes temperature variations across seasons in the Northern and Southern Hemispheres, revealing subtle yet insightful differences. In the Northern Hemisphere, a greater variability in winter temperatures is apparent, suggested by longer whiskers and more outliers, likely influenced by its extensive landmass. Spring shows a slightly higher median temperature variation in the Northern Hemisphere, indicative of consistently warmer springs than in the Southern Hemisphere. Interestingly, during summer, the two hemispheres display nearly identical temperature variations, suggesting a universal pattern of summer temperature changes. Come fall, the Southern Hemisphere exhibits a slightly wider range of temperature variations, which could point towards a more dynamic climatic response during this season.</p>
 <p>Overall, while median temperature variations are generally comparable between the hemispheres, the Northern Hemisphere tends to exhibit greater extremes, particularly in winter and spring, which can be attributed to its larger landmass and consequent continental climate influence.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Our extensive exploratory data analysis of the temperature anomalies dataset indicates a heightened susceptibility to global warming in the Northern Hemisphere, particularly around the North Pole. This trend may be attributed to the higher population density in the Northern Hemisphere. Furthermore, temperature anomalies in the mid-latitudes and equatorial regions exhibit more stable and gradual changes. Consequently, developing predictive models for temperature anomalies will likely pose greater challenges in the Arctic region.</p>
 
 
 </section>
